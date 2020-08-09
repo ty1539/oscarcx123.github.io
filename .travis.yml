@@ -12,7 +12,6 @@ cache:
 before_install:
   - export TZ='America/New_York'
 
-
 install:
   - npm install -g hexo-cli # 安装 Hexo 
   - npm install # 安装 Hexo 依赖
