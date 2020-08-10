@@ -99,7 +99,7 @@ kill $(ps aux | grep '[f]citx5' | awk '{print $2}')
 
 激活输入法就是`Ctrl` + `Space`，输入法切换就是熟悉的`Ctrl` + `Shift`，在中文输入法下可以用`Left Shift`临时切到英文
 
-嗯，先把参考文章放这儿了，毕竟fcitx5的配置都是互相抄，全都一个模子刻出来的，所以我下面列出的配置也都是抄来的
+嗯，先把参考文章放这儿了，毕竟fcitx5的配置都是互相抄，全都一个模子刻出来的，所以我下面列出的配置大部分也都是抄来的。
 
 fcitx5配置参考文章：
 * [在Manjaro上优雅地使用Fcitx5 - DotIN13](https://www.wannaexpresso.com/2020/03/26/fcitx5/)
@@ -108,7 +108,7 @@ fcitx5配置参考文章：
 
 ## 设置开机启动
 
-Settings > Session and Startup > Application Autostart，点击add就可以填写内容添加了。下面是我填写的内容，仅供参考
+Settings > Session and Startup > Application Autostart，点击add就可以填写内容添加了。下面是我填写的内容，仅供参考。
 
 ```
 Name: fcitx5
@@ -161,27 +161,136 @@ export XMODIFIERS="@im=fcitx5"
 在`~/.config/fcitx5/conf/classicui.conf`添加如下内容
 
 ```
-# 按屏幕 DPI 使用
-PerScreenDPI=False
+# 按屏幕 DPI 使用（如果多屏输入法窗口大小不一样就改成False）
+PerScreenDPI=True
 
 # Font (设置成你喜欢的字体)
-Font="Noto Sans Regular 14"
+Font="Noto Sans CJK SC 16"
 ```
 
-## 关闭云拼音
+## 云拼音
 
-为了防止泄露隐私，最好还是关闭云拼音
+看到一堆教程都在担心泄露隐私，然而只依赖本地词库的效果确实不理想，zh-wiki百万词库也有很多覆盖不到的词组，所以我还是开启了云拼音。
 
-在`~/.config/fcitx5/conf/pinyin.conf`添加如下内容
+在`~/.config/fcitx5/conf/pinyin.conf`可以找到如下内容
 
 ```
 # Enable Cloud Pinyin
-CloudPinyinEnabled=False
+CloudPinyinEnabled=True
 ```
+
+不过所有教程对于云拼音都是一笔带过，毕竟都是你抄我我抄你，因此这里只能自力更生了。这个云拼音最好搞清楚到底是咋回事，到时候真的如众多参考文章所说的那样直播打字可不行，所以这种情况直接看源码就是最直接的了。fcitx5自带拼音的repo是[fcitx5-chinese-addons](https://github.com/fcitx/fcitx5-chinese-addons)，云拼音相关的代码在fcitx5-chinese-addons/modules/cloudpinyin，其中需要重点关注下cloudpinyin.h和cloudpinyin.cpp。
+
+在cloudpinyin.h中我找到了下面这段代码，看起来云拼音支持`Google`、`GoogleCN`和`Baidu`，而且默认选用`GoogleCN`。看上去还可以通过`Ctrl+Alt+Shift+C`来开关云拼音，而且云拼音要在输入至少四个字母的时候才会生效。配置项很明显是Backend，然而这个东西应该放哪儿还不知道，所以接着看代码。
+
+```cpp
+FCITX_CONFIG_ENUM(CloudPinyinBackend, Google, GoogleCN, Baidu);
+FCITX_CONFIGURATION(
+    CloudPinyinConfig,
+    fcitx::Option<fcitx::KeyList> toggleKey{
+        this,
+        "Toggle Key",
+        _("Toggle Key"),
+        {fcitx::Key("Control+Alt+Shift+C")}};
+    fcitx::Option<int> minimumLength{this, "MinimumPinyinLength",
+                                     _("Minimum Pinyin Length"), 4};
+    fcitx::Option<CloudPinyinBackend> backend{this, "Backend", _("Backend"),
+                                              CloudPinyinBackend::GoogleCN};);
+```
+
+果不其然，在cloudpinyin.cpp里头看到了下面这段，现在配置存放的位置也知道了。
+
+```cpp
+void CloudPinyin::reloadConfig() {
+    readAsIni(config_, "conf/cloudpinyin.conf");
+}
+```
+
+接下来改成百度试试看，创建`~/.config/fcitx5/conf/cloudpinyin.conf`并写入下面内容
+
+```
+Backend=Baidu
+```
+
+然后就是见证奇迹的时刻，打开Wireshark，然后在文本框随意输入一串拼音首字母，就可以看到云拼音后端确实是切换成百度了。这里篇幅所限，仅展示部分Wireshark输出。
+
+```
+7	4.990732355	Standard query 0xbc7e A olime.baidu.com
+8	4.990791024	Standard query 0xba76 AAAA olime.baidu.com
+9	5.000496417	Standard query response 0xbc7e A olime.baidu.com
+10	5.218008595	Standard query response 0xba76 AAAA olime.baidu.com
+```
+
+然后我顺便看了眼API，看起来靠谱，应该不会被直播打字吧。
+
+```
+# Google
+https://www.google.com/inputtools/request?ime=pinyin&text=lianganyuanshengtibuzhu
+["SUCCESS",[["lianganyuanshengtibuzhu",["两岸猿声啼不住"],[],{"annotation":["liang an yuan sheng ti bu zhu"],"candidate_type":[0],"lc":["16 16 16 16 16 16 16"]}]]]
+
+# Baidu
+https://olime.baidu.com/py?rn=0&pn=1&ol=1&py=qingzhouyiguowanchongshan
+{"0":[[["轻舟已过万重山",25,{"pinyin":"qing'zhou'yi'guo'wan'chong'shan","type":"IMEDICT"}]]],"1":"qing'zhou'yi'guo'wan'chong'shan","result":[null]}
+```
+
+所以如果要查看其它可配置项目，直接看对应模块的头文件定义和代码实现就行了。
 
 ## 修改主题
 
 看了一圈，一堆教程都推荐[Fcitx5-Material-Color](https://github.com/hosxy/Fcitx5-Material-Color)，看图例感觉还不错，于是依葫芦画瓢装个试试。安装方法在repo的Readme已经写的很清楚了，我就不赘述了。
+
+# 全局emoji
+
+fcitx5是支持emoji的输入的，但是试图在Chrome地址栏输入emoji会显示为黑框，所以需要配置全局emoji的支持。
+
+先安装noto-fonts-emoji，命令如下
+
+```
+sudo pacman -S --noconfirm noto-fonts-emoji
+```
+
+创建`/etc/fonts/local.conf`并写入如下内容
+
+```
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+
+ <alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Noto Sans</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Sans</family>
+   </prefer> 
+ </alias>
+
+ <alias>
+   <family>serif</family>
+   <prefer>
+     <family>Noto Serif</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Serif</family>
+   </prefer>
+ </alias>
+
+ <alias>
+  <family>monospace</family>
+  <prefer>
+    <family>Noto Mono</family>
+    <family>Noto Color Emoji</family>
+    <family>Noto Emoji</family>
+   </prefer>
+ </alias>
+
+</fontconfig>
+```
+
+然后在Settings > Appearance > Fonts 把字体设置为Noto Sans CJK SC Regular就可以了。
+
+参考文章：[Tutorial: How to enable system-wide color emoji support](https://forum.manjaro.org/t/tutorial-how-to-enable-system-wide-color-emoji-support/35188)
 
 # 安装常用软件
 
@@ -236,13 +345,41 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS="@im=fcitx5"
 ```
 
-启动之后如果觉得字体太小，那就先退出QQ/微信，然后在终端运行下面代码
+### 字体太小
+
+先退出QQ/微信，然后在终端运行下面代码
 
 ```
 env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg
 ```
 
 在弹出来的wine设置面板中找到显示 > 屏幕分辨率，修改dpi即可
+
+### 个人文件夹被占用
+
+这个是因为QQ进程有残留，在启动之前杀掉就可以了
+
+```bash
+kill $(ps aux | grep '[T]IM.exe' | awk '{print $2}')
+```
+
+之前倒是还见过一个Python版本的，也顺便贴在这里，虽然我是感觉有点杀鸡用牛刀了。出处是[解决Linux下的Wine TIM多次登录文件夹被占用的问题](https://zhuanlan.zhihu.com/p/31312938)
+
+```python
+import psutil
+import os
+import signal
+
+# 获取进程列表
+process_list = [psutil.Process(pid) for pid in psutil.pids()]
+
+# 遍历并找到TIM.exe对应的pid
+for process in process_list:
+    # 如果找到残留的TIM进程就kill掉
+    if process.name() == 'TIM.exe':
+        print(process)
+        os.kill(process.pid, signal.SIGKILL)
+```
 
 ## 汉化包
 
@@ -286,7 +423,7 @@ VSCode的配置文件在~/.config/Code - OSS/User/settings.json，这里给出�
     "files.autoSave": "afterDelay",
     "editor.fontSize": 18,
     "editor.wordWrap": "on",
-    "window.zoomLevel": 0.25
+    "window.zoomLevel": 0.5
 }
 ```
 
@@ -309,7 +446,7 @@ Manjaro自带[CUPS](https://wiki.archlinux.org/index.php/CUPS_(%E7%AE%80%E4%BD%9
 
 下面以我的打印机Brother HL-L2320D为例，各位自行替换成自己的型号。
 
-首先，我们需要准备ppd文件（打印机描述文件）。Manjaro自带了很多来自Foomatic和Gutenprint的ppd文件，所以执行下面命令先看看有没有。
+首先需要准备ppd文件（打印机描述文件）。Manjaro自带了很多来自Foomatic和Gutenprint的ppd文件，所以执行下面命令先看看有没有。
 
 ```
 lpinfo -m | grep "HL-L2320D"
@@ -344,13 +481,13 @@ $ lpoptions -l
 Duplex/Duplex: DuplexTumble DuplexNoTumble *None
 ```
 
-上面这个是双面打印的相关设置，默认是关闭的，这里我们要用下面命令打开
+上面这个是双面打印的相关设置，默认是关闭的，这里要用下面命令打开
 
 ```
 lpadmin -p HL-L2320D -o Duplex=DuplexNoTumble
 ```
 
-这个地方有个大坑，正确方法当然是用`lpadmin`，错误方法是使用`lpoptions`。因为我们是要在GUI环境下打印，所以只有通过`lpadmin`修改，其它程序才能看到。`lpoptions`也可以跟同样的参数修改，不过只能被`lp`和`lpr`这类基于命令行的打印程序看到。
+这个地方有个大坑，正确方法当然是用`lpadmin`，错误方法是使用`lpoptions`。因为是要在GUI环境下打印，所以只有通过`lpadmin`修改，其它程序才能看到。`lpoptions`也可以跟同样的参数修改，不过只能被`lp`和`lpr`这类基于命令行的打印程序看到。
 
 大坑参考的是[Setting CUPS defaults with lpoptions vs web interface
 ](https://unix.stackexchange.com/questions/339205/setting-cups-defaults-with-lpoptions-vs-web-interface)
@@ -386,6 +523,10 @@ sudo timedatectl set-ntp 1
 ```
 sudo pacman -S --noconfirm wqy-microhei
 ```
+
+# 多显示器
+
+显示设置项在Settings > Display，系统默认是mirror displays，取消勾选，然后点Apply，就搞定了。
 
 # 小结
 
