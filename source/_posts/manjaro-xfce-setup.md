@@ -42,15 +42,15 @@ Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop
 
 # sudo免密码
 
-每次`sudo`都要输入密码挺烦的，不过sudo免密码会降低安全性，这个各位自己衡量
+每次`sudo`都要输入密码挺烦的，不过sudo免密码会降低安全性，这个各位自己衡量。
 
-输入下面命令来打开sudoers，这里编辑器指定为nano，因为简单好用
+输入下面命令来打开sudoers，这里编辑器指定为nano，因为简单好用。
 
 ```
 sudo EDITOR=nano visudo
 ```
 
-在sudoers文件的最后，加上下面这句，这里需要把`your_username`替换成自己的用户名
+在sudoers文件的最后，加上下面这句，这里需要把`your_username`替换成自己的用户名。
 
 ```
 your_username ALL=(ALL) NOPASSWD: ALL
@@ -58,7 +58,7 @@ your_username ALL=(ALL) NOPASSWD: ALL
 
 # 更新软件包
 
-基本上装完系统第一件事就是先更新各类软件包，这个指令要跑好一会儿
+基本上装完系统第一件事就是先更新各类软件包，这个指令要跑好一会儿。
 
 ```
 sudo pacman -Syu --noconfirm
@@ -89,15 +89,15 @@ sudo pacman -S --noconfirm fcitx5-chinese-addons
 yay -S --noconfirm fcitx5-pinyin-zhwiki
 ```
 
-因为暂时还没有GUI的配置工具，只能手动修改配置了
+因为暂时还没有GUI的配置工具，只能手动修改配置了。
 
-切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令
+切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令。
 
 ```
 kill $(ps aux | grep '[f]citx5' | awk '{print $2}')
 ```
 
-激活输入法就是`Ctrl` + `Space`，输入法切换就是熟悉的`Ctrl` + `Shift`，在中文输入法下可以用`Left Shift`临时切到英文
+激活输入法就是`Ctrl` + `Space`，输入法切换就是熟悉的`Ctrl` + `Shift`，在中文输入法下可以用`Left Shift`临时切到英文。
 
 嗯，先把参考文章放这儿了，毕竟fcitx5的配置都是互相抄，全都一个模子刻出来的，所以我下面列出的配置大部分也都是抄来的。
 
@@ -221,7 +221,7 @@ Backend=Baidu
 10	5.218008595	Standard query response 0xba76 AAAA olime.baidu.com
 ```
 
-然后我顺便看了眼API，看起来靠谱，应该不会被直播打字吧。
+然后我顺便看了眼API，看起来靠谱，应该不会被直播打字吧。个人感觉谷歌的API效果更好，百度的API很多时候出不来结果。
 
 ```
 # Google
@@ -239,7 +239,7 @@ https://olime.baidu.com/py?rn=0&pn=1&ol=1&py=qingzhouyiguowanchongshan
 
 看了一圈，一堆教程都推荐[Fcitx5-Material-Color](https://github.com/hosxy/Fcitx5-Material-Color)，看图例感觉还不错，于是依葫芦画瓢装个试试。安装方法在repo的Readme已经写的很清楚了，我就不赘述了。
 
-# 全局emoji
+# 全局emoji支持
 
 fcitx5是支持emoji的输入的，但是试图在Chrome地址栏输入emoji会显示为黑框，所以需要配置全局emoji的支持。
 
@@ -318,26 +318,43 @@ sudo pacman -S --noconfirm virtualbox $linux_kernel_ver-virtualbox-host-modules
 sudo gpasswd -a $USER vboxusers
 ```
 
-## QQ & Wechat
+## 汉化包
 
-QQ和微信这两个一直都不太好搞，目前看来基本有三套方案。
-
-最容易的就是直接在Virtualbox里头跑完整的系统，然后使用seamless mode（Right Ctrl + H），不过视觉效果看起来不太好，QQ周围会有一圈Windows的背景。
-
-要么就是用`deepin-wine`来解决，各种小毛病挺多的（比如无法记住密码），不过能用。AUR上面有大佬打包好的，基本上是开箱即用。
-
-当然也可以用官方发布的Linux版QQ，不过UI十分简陋，梦回十年前。不过最麻烦的问题，还是不能用帐号密码登录，必须要用手机扫码，不知道用意何在。
-
-这里重点说下`deepin-wine`方案。
-
-安装之后，分别找到如下路径中的`run.sh`文件
+这些汉化包其实装不装都行的，感觉平时也很少用这几个软件。
 
 ```
-/opt/deepinwine/apps/Deepin-WeChat
-/opt/deepinwine/apps/Deepin-TIM
+sudo pacman -S --noconfirm firefox-i18n-zh-cn
+sudo pacman -S --noconfirm thunderbird-i18n-zh-cn
+sudo pacman -S --noconfirm gimp-help-zh_cn
 ```
 
-然后在`run.sh`文件头部的`WINE_CMD="wine"`下面添加如下代码
+# QQ & Wechat
+
+QQ和微信这两个一直都不太好搞，值得单独拿出来说说。目前看来基本有三套可行方案。
+
+## Virtualbox
+
+最容易的就是直接在Virtualbox里头跑完整的系统，然后使用seamless mode（Right Ctrl + L），不过视觉效果看起来不太好，QQ周围会有一圈Windows的背景。
+
+当然，在虚拟机下运行的效果肯定是最好的，也不会出什么奇怪的毛病，就是占用资源会比较多。QQ截图功能只能在虚拟机内使用，并且使用的也是虚拟机内的输入法。
+
+## LinuxQQ
+
+官方也有发布Linux版QQ，不过UI十分简陋，功能也不全，简直是梦回十年前。最麻烦的问题，还是不能用帐号密码登录，必须要用手机扫码，不知道用意何在。
+
+目前最新版是2020/4/9发布的`2.0.0 Beta2`，仅仅打字聊天的话还是可以胜任的。想要体验的话可以直接安装大佬打包好的AUR包，或者在官网下载pacman包。
+
+## deepin-wine
+
+这里重点说下`deepin-wine`方案。虽然各种小毛病挺多的，不过总体表现不错。AUR上面有大佬打包好的，基本上是开箱即用。而且更香的是，`deepin-wine`方案的QQ截图是可以作用于全局的，只要QQ拥有焦点，就可以使用截图热键（Ctrl + Alt + A）。
+
+这里以TIM QQ为例，使用下面命令安装
+
+```
+yay -S --noconfirm deepin-wine-tim
+```
+
+安装之后，在`/opt/deepinwine/apps/Deepin-TIM/run.sh`文件头部的`WINE_CMD="wine"`下面添加如下代码，确保输入法可以在QQ中使用。
 
 ```
 export GTK_IM_MODULE=fcitx5
@@ -345,22 +362,46 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS="@im=fcitx5"
 ```
 
+由于原版`wine`的QQ托盘图表有点问题，而且不能保存密码，因此维护大佬建议切换到`deepin-wine`。
+
+好在大佬已经准备好了一键脚本，直接运行下面命令就能安装需要的依赖，移除已安装的TIM目录并回退对注册表文件的修改。
+
+```
+/opt/deepinwine/apps/Deepin-TIM/run.sh -d
+```
+
+注意：切换到`deepin-wine`后，对`wine`的修改，如更改dpi，都改为对`deepin-wine`的修改。
+
+想更进一步了解可以看[deepin-wine-tim-arch](https://github.com/countstarlight/deepin-wine-tim-arch)这个repo。
+
+## deepin-wine疑难杂症
+
 ### 字体太小
 
 先退出QQ/微信，然后在终端运行下面代码
 
 ```
+# 原版wine运行这个
 env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg
+
+# deepin-wine运行这个
+env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" deepin-wine winecfg
 ```
 
-在弹出来的wine设置面板中找到显示 > 屏幕分辨率，修改dpi即可
+在弹出来的wine设置面板中找到显示 > 屏幕分辨率，修改dpi即可。
 
 ### 个人文件夹被占用
 
-这个是因为QQ进程有残留，在启动之前杀掉就可以了
+这个是因为QQ进程有残留，在启动之前杀掉就可以了。
 
 ```bash
 kill $(ps aux | grep '[T]IM.exe' | awk '{print $2}')
+```
+
+这里我是直接修改了桌面的launcher，使用文本编辑器打开launcher，将Exec那行替换成下面这个即可
+
+```
+Exec=sh -c "kill $(ps aux | grep '[T]IM.exe' | awk '{print $2}'); '/opt/deepinwine/apps/Deepin-TIM/run.sh' -u %u"
 ```
 
 之前倒是还见过一个Python版本的，也顺便贴在这里，虽然我是感觉有点杀鸡用牛刀了。出处是[解决Linux下的Wine TIM多次登录文件夹被占用的问题](https://zhuanlan.zhihu.com/p/31312938)
@@ -381,15 +422,17 @@ for process in process_list:
         os.kill(process.pid, signal.SIGKILL)
 ```
 
-## 汉化包
+### 表情/@人/右键无效
 
-这些汉化包其实装不装都行的，感觉平时也很少用这几个软件
+QQ自带的表情（不是emoji）发不出去，然后右键菜单（例如回复指定消息，撤回）无法使用，群里也没法在输入框中@其他人。
 
-```
-sudo pacman -S --noconfirm firefox-i18n-zh-cn
-sudo pacman -S --noconfirm thunderbird-i18n-zh-cn
-sudo pacman -S --noconfirm gimp-help-zh_cn
-```
+解决不能发表情/@其他人：设置（Settings） > 窗口管理器（Window Manager） > 焦点（Focus） > 取消勾选自动聚焦新创建的窗口（Automatically give focus to newly created windows）。
+
+解决不能右键使用：设置（Settings） > 窗口管理器微调（Window Manager Tweaks） > 焦点（Focus） > 取消勾选遵照标准的ICCCM焦点提示（Honor standard ICCCM focus hint）。
+
+然后就会发现新建终端之后没法直接输入，需要点击窗口获取焦点才行。根据issue下方的讨论跟帖，只要重新勾选自动聚焦新创建的窗口就行了，而且QQ表情不会受影响。我试了下，果然如此，也不知道是什么原理，反正问题解决了就行。
+
+参考文章：[关于xfce环境下qq不能发表情和右键使用的解决办法 #87](https://github.com/askme765cs/Wine-QQ-TIM/issues/87)
 
 # 配置编程环境
 
@@ -414,7 +457,7 @@ yay -S --noconfirm android-studio
 sudo pacman -S --noconfirm code
 ```
 
-其中VSCode还是需要更进一步的配置
+其中VSCode还是需要更进一步的配置。
 
 VSCode的配置文件在~/.config/Code - OSS/User/settings.json，这里给出我的配置
 
@@ -427,7 +470,7 @@ VSCode的配置文件在~/.config/Code - OSS/User/settings.json，这里给出�
 }
 ```
 
-当然插件是必不可少的，这里直接通过命令行安装，省事儿
+当然插件是必不可少的，这里直接通过命令行安装，省事儿。
 
 ```
 code --install-extension ms-ceintl.vscode-language-pack-zh-hans
@@ -452,13 +495,13 @@ Manjaro自带[CUPS](https://wiki.archlinux.org/index.php/CUPS_(%E7%AE%80%E4%BD%9
 lpinfo -m | grep "HL-L2320D"
 ```
 
-如果有那就万事大吉，没有也没关系，这时候去AUR看看有没有别人构建好的ppd文件。我运气还不错，已经有现成的可以下载。如果AUR也没有，那么就要自行提取ppd文件了，兄弟打印机的提取方法可以看[Packaging Brother printer drivers - Arch Wiki](https://wiki.archlinux.org/index.php/Packaging_Brother_printer_drivers)
+如果有那就万事大吉，没有也没关系，这时候去AUR看看有没有别人构建好的ppd文件。我运气还不错，已经有现成的可以下载。如果AUR也没有，那么就要自行提取ppd文件了，兄弟打印机的提取方法可以看[Packaging Brother printer drivers - Arch Wiki](https://wiki.archlinux.org/index.php/Packaging_Brother_printer_drivers)。
 
 ```
 yay -S --noconfirm brother-hll2320d
 ```
 
-搞定ppd文件之后，再执行刚才的`lpinfo`命令就能看到ppd文件的路径了
+搞定ppd文件之后，再执行刚才的`lpinfo`命令就能看到ppd文件的路径了。
 
 ```
 $ lpinfo -m | grep "HL-L2320D"
@@ -518,11 +561,21 @@ sudo timedatectl set-ntp 1
 
 # 修正终端字体间距问题
 
-这个问题好像是只有用中文系统才会看到，英文系统是正常的。反正安装文泉驿字体就能解决了。
+这个问题好像是只有用中文系统才会看到，英文系统是正常的。反正换个字体就好了，比如安装文泉驿字体。
 
 ```
 sudo pacman -S --noconfirm wqy-microhei
 ```
+
+# 托盘显示电量
+
+右下角只有电池图标，点进去才能看到剩余电量，就感觉这个图标特别鸡肋，希望能够在外面就显示剩余电量百分比。
+
+进入Settings > Panel > Items，添加Power Manager Plugin或者Battery Monitor，这个就看自己喜好了。
+
+Power Manager Plugin属于xfce4-power-manager，设置项特别少，只有百分比和剩余时间两个选项，而且还有个傻大粗的鸡肋电池图标。不过点击电池图标会有更多功能，比如显示外设电量，调节亮度，进入Power Manager设置面板。
+
+Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展示各种类型的信息，不过也就只能展示，想要修改配置还是得靠xfce4-power-manager。
 
 # 多显示器
 
