@@ -1,5 +1,5 @@
 ---
-title: Travis-CI初体验
+title: 用Travis-CI构建Hexo博客
 categories:
   - 技术
 date: 2020-08-09 15:23:47

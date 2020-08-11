@@ -18,7 +18,7 @@ permalink:
 
 最开始是笔记本长时间无操作会锁屏，重新解锁之后，WIFI就会莫名其妙的丢失连接。当时感觉问题也不大，也就是手动点两下重新连接WIFI的事，所以也没想着换系统。
 
-前一阵子搭建了NAS，然后发现其它设备都可以匿名访问，唯独Win10要求输入帐号密码。输入就输入吧，然后又发现每次启动之后都会提示“无法重新连接所有网络驱动器“，然后又得重新输入帐号密码。网上搜了一圈，发现在v2ex已经有[讨论帖](https://www.v2ex.com/t/214955)。仔细一看，居然是2015年就已经出现的bug，硬生生拖了5年，终于在win10 （ver 2004)修复了。
+前一阵子搭建了NAS，然后发现其它设备都可以匿名访问，唯独Win10要求输入帐号密码。输入就输入吧，然后又发现每次启动之后都会提示“无法重新连接所有网络驱动器”，然后又得重新输入帐号密码。网上搜了一圈，发现在v2ex已经有[讨论帖](https://www.v2ex.com/t/214955)。仔细一看，居然是2015年就已经出现的bug，硬生生拖了5年，终于在win10 （ver 2004)修复了。
 
 既然修复了，那就去更新系统呗。Windows Update吭哧吭哧忙活半天，也没有给我更新到ver 2004，只是升级到了ver 1909。一进系统我就发现File Explorer不对劲，上面的地址栏都可以跑马了，感情这是越更新越丑啊。刚刚好那天下午需要打印一点文件，然后就发现这次更新直接把Print Spooler服务给搞瘫痪了。只要我一试图打印，Print Spooler服务就会自动关闭。最后弄的没办法了，开了个虚拟机来完成打印的。
 
@@ -68,7 +68,7 @@ sudo pacman -Syu --noconfirm
 
 我一般会安装这些工具：
 * neofetch：展示系统信息
-* tldr：可以快速查命令的常用方法，man的简易替代版，懒人专属
+* tldr：精简版man page，懒人专属
 * you-get：下载视频必备工具，直接贴视频网站的链接就行
 * aria2：多线程下载工具
 * yay：（必备）AUR的包管理器
@@ -76,6 +76,8 @@ sudo pacman -Syu --noconfirm
 ```
 sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay
 ```
+
+pacman不会用的话，直接输入`tldr pacman`就可以看到最常见的用法了，压根不用看又臭又长的man page。
 
 # 安装输入法
 
@@ -89,7 +91,7 @@ sudo pacman -S --noconfirm fcitx5-chinese-addons
 yay -S --noconfirm fcitx5-pinyin-zhwiki
 ```
 
-因为暂时还没有GUI的配置工具，只能手动修改配置了。
+可以通过带GUI的fcitx5-configtool来修改配置，或者跟我一样手动修改配置。
 
 切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令。
 
@@ -306,6 +308,7 @@ sudo pacman -S --noconfirm noto-fonts-emoji
 * Telegram：里头很多Manjaro大佬
 * Discord：聊游戏专用
 * Virtualbox：开源的虚拟机
+* SMPlayer：个人感觉比VLC好用
 
 ```
 yay -S --noconfirm google-chrome
@@ -327,6 +330,44 @@ sudo pacman -S --noconfirm firefox-i18n-zh-cn
 sudo pacman -S --noconfirm thunderbird-i18n-zh-cn
 sudo pacman -S --noconfirm gimp-help-zh_cn
 ```
+
+## 疑难杂症
+
+### Chrome在每次开机后首次启动要求keyring密码
+
+这个问题貌似只有xfce下才会出现，一个简单的处理方法就是设置为空密码，不过安全性可能会下降。鱼和熊掌不可兼得，这个自行取舍。
+
+使用如下命令备份keyrings后删除，如果只存放了Chrome的keyring就不需要备份，直接删除就行
+
+```
+cp -r ~/.local/share/keyrings ~/keyrings-backup
+rm ~/.local/share/keyrings/*
+```
+
+然后重启系统，再次打开Chrome，就会重新要求设定keyring密码。这里直接敲回车（空密码），会提示“By choosing to use a blank password, your stored passwords will not be safely encrypted. They will be accessible by anyone with access to your files.”，这里直接点continue即可。
+
+参考文章：[Chrome harasses me for a keychain password at startup](https://unix.stackexchange.com/questions/324843/chrome-harasses-me-for-a-keychain-password-at-startup)
+
+### Discord强制要求更新
+
+虽然discord在linux下表现很棒，但是强制更新这个确实有点恶心。有时候Manjaro的仓库里头还没有更新discord版本，但是discord客户端不更新就不让用了。好在客户端本身并不是真的不让登录，只是简单的检测了下版本号，所以应该知道怎么解决了吧。
+
+首先找到discord的路径，如下所示
+
+```
+$ ls -al `which discord`
+lrwxrwxrwx 1 root root 20 Apr 21 09:58 /usr/bin/discord -> /opt/discord/Discord
+```
+
+然后在discord文件夹找到`./resources/build_info.json`，修改里头的版本号即可。
+
+参考文章：[Discord won't open on Linux when an update is available](https://support.discord.com/hc/en-us/community/posts/360057789311-Discord-won-t-open-on-Linux-when-an-update-is-available)
+
+### VLC看NAS上的视频经常断流
+
+这个问题很神奇，不管是Windows还是Linux，只要用VLC播放就会间歇性断流，在 Preference > Input / Codecs > Advanced 修改File caching和Network caching也不管用。
+
+所以我直接换成了SMPlayer，然后就再也没出现过断流的问题。
 
 # QQ & Wechat
 
@@ -580,6 +621,12 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 # 多显示器
 
 显示设置项在Settings > Display，系统默认是mirror displays，取消勾选，然后点Apply，就搞定了。
+
+# 自定义grub
+
+自带的grub有点丑，而且分辨率还比较低，可以在`/etc/default/grub`修改，或者直接用带有GUI界面的`grub-customizer`，可以通过pacman或者yay安装。
+
+其实还能直接安装配置好的主题，可以在[Grub Themes](https://www.gnome-look.org/browse/cat/109/ord/rating/)下载。
 
 # 小结
 
