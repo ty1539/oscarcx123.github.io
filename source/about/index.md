@@ -214,17 +214,41 @@ Azure's Note严格来讲并不算博客。当时需要一个地方记录零碎�
 
 2020.04.24 - 恢复并迁移了旧博客的数据
 
+2020.08.09 - 使用Travis-CI构建博客
+
 ## 个性化
 
-* 主题 - NexT.Gemini
-* 音乐播放器 - [APlayer](https://github.com/MoePlayer/APlayer)
-    * 把该项目的dist文件夹复制到themes\next\source
-    * 页面跳转不打断播放（[theme-next-pjax](https://github.com/theme-next/theme-next-pjax)）
-* 字数统计和阅读时长 - [hexo-symbols-count-time](https://github.com/theme-next/hexo-symbols-count-time)
-    * 代码块不计入字数（exclude_codeblock: true）
-* 动态背景 - [theme-next-canvas-nest](https://github.com/theme-next/theme-next-canvas-nest)
-* 阅读进度条 - 主题设置里找到Reading progress bar开启
-* 备份源文件 - [hexo-git-backup](https://github.com/coneycode/hexo-git-backup)
-* 隐藏部分分类（比如随笔） - [hexo-generator-index2](https://github.com/Jamling/hexo-generator-index2)
-* 批处理实现一键备份+部署
-* hexo server自动打开浏览器 - 修改Hexo/node_modules/hexo-server/lib/server.js
+### 主题
+
+[NexT.Gemini](https://github.com/theme-next/hexo-theme-next)
+* 版本：v7.7.1
+
+### 音乐播放器
+
+[APlayer](https://github.com/MoePlayer/APlayer)
+* 版本：v1.10.1
+* 安装方法：把该项目的dist文件夹复制到themes\next\source
+* 页面跳转不打断播放（[theme-next-pjax](https://github.com/theme-next/theme-next-pjax)）
+
+### 字数统计和阅读时长
+
+[hexo-symbols-count-time](https://github.com/theme-next/hexo-symbols-count-time)
+* 版本：v0.7.0
+* 代码块不计入字数（exclude_codeblock: true）
+
+### 动态背景
+
+[theme-next-canvas-nest](https://github.com/theme-next/theme-next-canvas-nest)
+
+### 阅读进度条
+
+next主题的_config.yml里找到Reading progress bar开启
+
+### 隐藏部分分类（比如随笔）
+
+[hexo-generator-index2](https://github.com/Jamling/hexo-generator-index2)
+* 版本：v0.2.0
+
+### 禁用更新日期
+
+next主题的_config.yml > post_meta > updated_at > enable: false

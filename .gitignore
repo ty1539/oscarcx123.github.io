@@ -1,7 +1,15 @@
+# 操作系统生成的文件
 .DS_Store
 Thumbs.db
-db.json
+
+# 日志文件
 *.log
-node_modules/
+
+# hexo每次部署生成的文件
+db.json
 public/
 .deploy*/
+
+# 每次npm install会自动生成
+package-lock.json
+node_modules/
