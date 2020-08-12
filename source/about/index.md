@@ -222,6 +222,25 @@ Azure's Note严格来讲并不算博客。当时需要一个地方记录零碎�
 
 [NexT.Gemini](https://github.com/theme-next/hexo-theme-next)
 * 版本：v7.7.1
+* 手动修复了[issue #1543：中文目录无法跳转，英文可以跳转](https://github.com/theme-next/hexo-theme-next/issues/1543)
+
+<details>
+<summary>具体Patch</summary>
+<pre>
+中文目录无法跳转，英文可以跳转，应该是Hexo升级到v5.0.0造成的
+
+对next主题目录下source/js/utils.js的registerSidebarTOC函数做两处修改
+
+```js
+// 修改前
+var target = document.getElementById(event.currentTarget.getAttribute('href').replace('#', ''));
+return document.getElementById(link.getAttribute('href').replace('#', ''));
+// 修改后
+var target = document.getElementById(decodeURI(event.currentTarget.getAttribute('href').replace('#', '')));
+return document.getElementById(decodeURI(link.getAttribute('href').replace('#', '')));
+```
+</pre>
+</details>
 
 ### 音乐播放器
 
