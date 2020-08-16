@@ -1,6 +1,8 @@
 ---
 title: Hello World (Hexo)
 date: 2020-02-21 02:00:00
+categories:
+  - 公告
 ---
 博客还是比之前用的docsify好不少啊！以后应该就在这里写东西了~
 

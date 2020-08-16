@@ -1,13 +1,12 @@
 ---
 title: Baby爆肌蚊/垃圾袋卡组介绍
+date: 2018-09-15 01:20:31
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-15 01:20:31
-permalink: 
 ---
-by 时光大佬
+本文搬运自原博客“AzureTCG”
+
+Note：本文作者不是我，是Azu美版群群友【时光】
 
 大家好，我是口袋妖怪TCGO的群主，时光。今天想给大家介绍一下最近比较流行的一个卡组。
 

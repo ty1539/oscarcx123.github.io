@@ -1,11 +1,10 @@
 ---
 title: Modern Operating Systems Intro
+date: 2020-03-10 17:19:05
 categories:
   - 技术
 tags:
-  - Operating System
-date: 2020-03-10 17:19:05
-permalink: 
+  - OS
 ---
 《现代操作系统》第一章自学笔记
 

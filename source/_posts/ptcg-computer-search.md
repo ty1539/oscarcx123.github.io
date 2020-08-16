@@ -1,11 +1,8 @@
 ---
 title: 电脑（Computer Search）——传奇的谢幕
+date: 2018-03-14 02:00:48
 categories:
   - PTCG
-tags:
-  - AzureBlog
-date: 2018-03-14 02:00:48
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

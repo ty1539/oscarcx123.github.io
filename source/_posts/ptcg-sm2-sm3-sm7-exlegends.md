@@ -1,12 +1,11 @@
 ---
 title: 疯狂开包
+date: 2018-09-04 00:10:24
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-04 00:10:24
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 这天在群里开了SM2原盒、SM3原盒、SM7精英盒、EX传说的缔造者
 
 <!--more-->

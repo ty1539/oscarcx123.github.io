@@ -1,9 +1,10 @@
 ---
 title: transmission安装和配置
+date: 2020-07-27 15:30:21
 categories:
   - 技术
-date: 2020-07-27 15:30:21
-permalink: 
+tags:
+  - transmission
 ---
 
 稍微记录下安装过程，以供日后参考

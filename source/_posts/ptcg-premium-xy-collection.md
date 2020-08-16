@@ -1,11 +1,8 @@
 ---
 title: Premium Trainer’s XY Collection开盒体验
+date: 2018-03-28 11:30:20
 categories:
   - PTCG
-tags:
-  - AzureBlog
-date: 2018-03-28 11:30:20
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

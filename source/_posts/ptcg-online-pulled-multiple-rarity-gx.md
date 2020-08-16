@@ -1,12 +1,11 @@
 ---
 title: PTCGO的4锁包开出三种不同罕度的GX
+date: 2018-10-13 17:53:58
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-10-13 17:53:58
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 在连续十多包没东西之后，终于欧了一把。
 
 <!--more-->

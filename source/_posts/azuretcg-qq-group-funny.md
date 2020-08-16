@@ -1,12 +1,11 @@
 ---
 title: 小群奇闻异事1
+date: 2018-10-09 03:56:52
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-10-09 03:56:52
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 今天群里聊着聊着突然开始讨论众人的富有程度，因此心血来潮设立一张Azu美版群的富豪榜。
 
 <!--more-->

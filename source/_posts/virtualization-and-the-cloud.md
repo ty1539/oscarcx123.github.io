@@ -1,12 +1,12 @@
 ---
 title: Virtualization and the Cloud
+date: 2020-03-01 17:09:25
 categories:
   - 技术
 tags:
   - Virtualization
   - VMWare
-date: 2020-03-01 17:09:25
-permalink: 
+  - OS
 ---
 《现代操作系统》第七章自学笔记
 

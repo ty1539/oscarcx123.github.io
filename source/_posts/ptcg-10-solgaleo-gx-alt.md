@@ -1,12 +1,11 @@
 ---
 title: 10盒日神异画GX
+date: 2018-10-16 22:27:46
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-10-16 22:27:46
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 恭喜星空成为新一任欧皇，这次时光也比较欧的，上任欧皇横竖跌落神坛。
 
 <!--more-->

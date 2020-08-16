@@ -1,11 +1,8 @@
 ---
 title: 参观asianpopcollabs有感
+date: 2018-03-04 16:00:57
 categories:
   - 随笔
-tags:
-  - AzureBlog
-date: 2018-03-04 16:00:57
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

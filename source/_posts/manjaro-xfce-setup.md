@@ -1,13 +1,11 @@
 ---
 title: Manjaro XFCE 安装和调教
+date: 2020-08-09 01:47:55
 categories:
   - 技术
 tags:
   - Linux
-date: 2020-08-09 01:47:55
-permalink: 
 ---
-
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
 <!--more-->
@@ -93,7 +91,7 @@ yay -S --noconfirm fcitx5-pinyin-zhwiki
 
 可以通过带GUI的fcitx5-configtool来修改配置，或者跟我一样手动修改配置。
 
-切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令。
+切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令。（其实还可以直接右键点击右下角托盘图标，然后退出）
 
 ```
 kill $(ps aux | grep '[f]citx5' | awk '{print $2}')
@@ -347,6 +345,16 @@ rm ~/.local/share/keyrings/*
 然后重启系统，再次打开Chrome，就会重新要求设定keyring密码。这里直接敲回车（空密码），会提示“By choosing to use a blank password, your stored passwords will not be safely encrypted. They will be accessible by anyone with access to your files.”，这里直接点continue即可。
 
 参考文章：[Chrome harasses me for a keychain password at startup](https://unix.stackexchange.com/questions/324843/chrome-harasses-me-for-a-keychain-password-at-startup)
+
+### 浏览器默认缩放值
+
+使用高分屏的话，浏览器的字会很小。平时Win10有全局150%的缩放，但是Manjaro就需要自己动手设置。
+
+个人感觉缩放设置在125%会比较舒服。
+
+Chrome：Settings > Page zoom
+
+Firefox：Preferences > Zoom > Default zoom
 
 ### Discord强制要求更新
 
@@ -618,9 +626,13 @@ Power Manager Plugin属于xfce4-power-manager，设置项特别少，只有百�
 
 Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展示各种类型的信息，不过也就只能展示，想要修改配置还是得靠xfce4-power-manager。
 
-# 多显示器
+# 双显示器（HDMI）
 
 显示设置项在Settings > Display，系统默认是mirror displays，取消勾选，然后点Apply，就搞定了。
+
+声音输出跟Windows不一样，是要分开设置的。点右下角托盘的喇叭 > Audio mixer，或者终端直接输入`pavucontrol`（GTK）/ `pavucontrol-qt`（Qt）。
+
+在弹出的窗口，找到Configuration，会看到Built-in Audio Profile的下拉菜单，选择Digital Stereo (HDMI) Output即可。如果要切换回来就选Analog Stereo Output。如果没找到想要的输出设备，可以用`aplay -l`查看所有声卡和音频设备（List all soundcards and digital audio devices）。
 
 # 自定义grub
 
@@ -632,4 +644,4 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 
 目前要调教的地方基本上就这么多，后续有发现新的内容会继续更新。
 
-前面全部使用用命令行调教是有原因的，就是为了搞一键装机脚本。
+前面全部使用用命令行调教是有原因的，就是为了搞一键装机脚本，炸机之后可以快速配置环境。

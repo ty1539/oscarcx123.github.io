@@ -1,12 +1,11 @@
 ---
 title: 横竖散包出lele
+date: 2018-10-27 23:45:48
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-10-27 23:45:48
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 嗯，传说中的一包出lele
 
 <!--more-->

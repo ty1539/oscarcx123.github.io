@@ -1,12 +1,11 @@
 ---
 title: Collector Chest (Spring 2018) 开盒记录
+date: 2018-09-12 23:53:47
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-12 23:53:47
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 这次给大家带来的是横竖富商以及星空穷鬼之间的对决！
 
 <!--more-->

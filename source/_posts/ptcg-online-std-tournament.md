@@ -1,11 +1,8 @@
 ---
 title: Standard杯赛试水
+date: 2018-03-15 17:30:23
 categories:
   - PTCG
-tags:
-  - AzureBlog
-date: 2018-03-15 17:30:23
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

@@ -1,11 +1,8 @@
 ---
 title: 开Shining Legends Super Premium Collection的体验
+date: 2018-03-06 23:30:38
 categories:
   - PTCG
-tags:
-  - AzureBlog
-date: 2018-03-06 23:30:38
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

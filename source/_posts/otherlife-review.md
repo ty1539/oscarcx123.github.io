@@ -1,11 +1,8 @@
 ---
 title: 观虚拟实惊(Otherlife)有感
+date: 2018-03-05 20:00:57
 categories:
   - 随笔
-tags:
-  - AzureBlog
-date: 2018-03-05 20:00:57
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

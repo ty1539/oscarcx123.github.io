@@ -1,12 +1,11 @@
 ---
 title: 零星的sm7原盒拆包结果
+date: 2018-09-30 17:48:25
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-30 17:48:25
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 今天零星的sm7盒子到了，虽然北京时间已经是凌晨1点，但是还是有不少群友捧场的，感谢各位的支持。
 
 <!--more-->

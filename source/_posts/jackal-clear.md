@@ -1,11 +1,8 @@
 ---
 title: 赤色要塞通关
+date: 2018-03-18 19:30:12
 categories:
   - 随笔
-tags:
-  - AzureBlog
-date: 2018-03-18 19:30:12
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

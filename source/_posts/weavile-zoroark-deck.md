@@ -1,11 +1,8 @@
 ---
 title: Weavile/Zoroark Deck
+date: 2018-03-09 19:30:58
 categories:
   - PTCG
-tags:
-  - AzureBlog
-date: 2018-03-09 19:30:58
-permalink: 
 ---
 本文搬运自原博客“AzureBlog”
 

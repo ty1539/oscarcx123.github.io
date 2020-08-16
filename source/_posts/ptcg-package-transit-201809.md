@@ -1,12 +1,11 @@
 ---
 title: 201809包裹中转
+date: 2018-09-10 23:24:59
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-10 23:24:59
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 群友自己在网上买单卡，然后寄到我这里验货，并且中转拆包合箱
 
 <!--more-->

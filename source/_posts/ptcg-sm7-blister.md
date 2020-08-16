@@ -1,12 +1,11 @@
 ---
 title: SM7 blister开包记录
+date: 2018-08-18 00:06:58
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-08-18 00:06:58
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 群内小伙伴一共下单了8个lele blister寄到我这里中转，我使用远程视频直播代开包从而减轻邮寄重量。废话不多说，直接上图放结果。
 
 <!--more-->

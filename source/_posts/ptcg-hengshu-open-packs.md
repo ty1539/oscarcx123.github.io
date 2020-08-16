@@ -1,12 +1,11 @@
 ---
 title: 横竖哥开包实录
+date: 2018-08-31 20:46:51
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-08-31 20:46:51
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 一横一竖从国内牌店买了很久的卡包终于到了，没开之前是这样的。
 
 ![](https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/img/ptcg_hengshu_open_packs_1.jpg)

@@ -1,12 +1,11 @@
 ---
 title: 读取Spine骨骼动画
+date: 2020-03-31 06:11:16
 categories:
   - 技术
 tags:
   - Spine
   - DragonBones
-date: 2020-03-31 06:11:16
-permalink: 
 ---
 # 前言
 

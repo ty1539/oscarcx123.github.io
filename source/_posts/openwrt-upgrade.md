@@ -1,11 +1,10 @@
 ---
 title: 记一次OpenWrt升级
+date: 2020-03-06 05:05:56
 categories:
   - 技术
 tags:
   - OpenWrt
-date: 2020-03-06 05:05:56
-permalink: 
 ---
 # 前情提要
 

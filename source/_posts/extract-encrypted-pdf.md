@@ -1,9 +1,10 @@
 ---
 title: 记一次China-DRM加密的PDF破解
+date: 2020-07-22 15:16:40
 categories:
   - 技术
-date: 2020-07-22 15:16:40
-permalink: 
+tags:
+  - hack
 ---
 # 前情提要
 

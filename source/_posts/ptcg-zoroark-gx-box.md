@@ -1,12 +1,11 @@
 ---
 title: 开佐罗GX盒子
+date: 2018-09-14 21:40:02
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-14 21:40:02
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 我终于下手开盒了。Gamestop这个盒子居然半价，也就是说只要15刀。但是GameStop不包邮而且每单只能买一盒，于是机智的我就打电话给BestBuy要求price match。所以最后就跟键鼠套装一起凑了包邮，含税16刀拿下了佐罗盒子。
 
 <!--more-->

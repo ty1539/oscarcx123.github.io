@@ -1,12 +1,11 @@
 ---
 title: 横竖开SM7原盒记录
+date: 2018-09-28 08:19:57
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-09-28 08:19:57
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 这次买的SM7原盒在国庆前就到了，于是就迫不及待地开了
 
 <!--more-->

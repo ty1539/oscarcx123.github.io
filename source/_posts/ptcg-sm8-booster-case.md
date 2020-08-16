@@ -1,12 +1,11 @@
 ---
 title: SM8爆箱
+date: 2018-11-07 18:13:08
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-11-07 18:13:08
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 之前忘了发记录，所以现在补发。
 
 这次快递速度很棒，发售前两天到货。

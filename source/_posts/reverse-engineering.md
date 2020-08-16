@@ -1,12 +1,10 @@
 ---
 title: 逆向工程学习记录
+date: 2019-09-02 22:06:00
 categories:
   - 技术
 tags:
-  - Spine
-  - DragonBones
-date: 2019-09-02 22:06:00
-permalink: 
+  - hack
 ---
 最近对Unity的逆向工程比较感兴趣，于是就开始自学，并把学习心得分享在这里。
 

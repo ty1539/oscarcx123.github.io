@@ -1,12 +1,11 @@
 ---
 title: 恭喜地主抄人勇夺榜眼
+date: 2018-10-13 00:17:05
 categories:
   - PTCG
-tags:
-  - AzureTCG
-date: 2018-10-13 00:17:05
-permalink: 
 ---
+本文搬运自原博客“AzureTCG”
+
 首先当然感谢抄人送的league promo code
 
 <!--more-->

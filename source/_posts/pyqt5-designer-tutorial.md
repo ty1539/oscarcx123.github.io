@@ -1,12 +1,11 @@
 ---
 title: PyQt5（designer）入门教程
+date: 2019-04-05 21:52:00
 categories:
   - 技术
 tags:
   - Python
   - PyQt5
-date: 2019-04-05 21:52:00
-permalink: 
 ---
 在网上看了不少关于PyQt5的中文教程，但是无外乎是过时了，讲解不清晰易懂，或者资料不完整。Youtube上面倒是有不少视频，但是不少Youtuber居然还在手写ui而不是利用方便快捷的Qt Designer。仅有的几个视频虽然利用了Qt Designer来设计UI，但是他们并没有将UI跟逻辑分离，这种行为并不是我期望的。
 
