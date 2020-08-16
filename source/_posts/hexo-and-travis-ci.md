@@ -3,6 +3,8 @@ title: 用Travis-CI构建Hexo博客
 date: 2020-08-09 15:23:47
 categories:
   - 技术
+tags:
+  - Hexo
 ---
 
 在用过Travis-CI之后，我只能说太香了！
