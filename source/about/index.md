@@ -142,11 +142,17 @@ BIS是被忽悠选的，不过技术相关内容少，就当水多一个专业�
 
 # 关于博客
 
-## 概述
+## 时间线
+
+2020.02.21 - 建立Hexo博客
+
+2020.04.24 - 恢复并迁移了旧博客的数据
+
+2020.08.09 - 使用Travis-CI构建博客
 
 这是我第三个博客，希望能够长时间写下去~
 
-### AzureBlog
+## AzureBlog
 
 AzureBlog是我第一个博客。当时啥也不懂，就跟着一篇教程搭建了个人博客，使用的还不是主流的博客软件。
 
@@ -161,7 +167,7 @@ AzureBlog是我第一个博客。当时啥也不懂，就跟着一篇教程搭�
 </pre>
 </details>
 
-### AzureTCG
+## AzureTCG
 
 AzureTCG是我第二个博客。这回学聪明了，换到了一个主流博客软件，并且迁移了AzureBlog的全部内容。由于家里是公网ip，当时直接在路由器上开启了DMZ功能，然后去搞了个免费的`.tk`域名，看起来就是个正儿八经的网站。记得当时博客的少量文章还被谷歌收录了，不过现在已经搜不到了。
 
@@ -176,7 +182,7 @@ AzureTCG是我第二个博客。这回学聪明了，换到了一个主流博客
 </pre>
 </details>
 
-### Azure's Note
+## Azure's Note
 
 Azure's Note严格来讲并不算博客。当时需要一个地方记录零碎的技巧知识，又看到docsify在文档方面表现不俗，于是在zhaouv的力荐和帮助下，建立了依托于GitHub Page的网站。
 
@@ -190,7 +196,7 @@ Azure's Note严格来讲并不算博客。当时需要一个地方记录零碎�
 </pre>
 </details>
 
-### Azure
+## Azure
 
 因为docsify逐渐满足不了需求，就找到了Hexo来搭建真正的博客。
 
@@ -205,86 +211,3 @@ Azure's Note严格来讲并不算博客。当时需要一个地方记录零碎�
 图床：GitHub
 </pre>
 </details>
-
-## 时间线
-
-2020.02.21 - 建立Hexo博客
-
-2020.04.24 - 恢复并迁移了旧博客的数据
-
-2020.08.09 - 使用Travis-CI构建博客
-
-## 个性化
-
-### 主题
-
-[NexT.Gemini](https://github.com/theme-next/hexo-theme-next)
-* 版本：v7.7.1
-* 手动修复了[issue #1543：中文目录无法跳转，英文可以跳转](https://github.com/theme-next/hexo-theme-next/issues/1543)
-
-<details>
-<summary>具体Patch</summary>
-<pre>
-中文目录无法跳转，英文可以跳转，应该是Hexo升级到v5.0.0造成的
-
-对next主题目录下source/js/utils.js的registerSidebarTOC函数做两处修改
-
-```js
-// 修改前
-var target = document.getElementById(event.currentTarget.getAttribute('href').replace('#', ''));
-return document.getElementById(link.getAttribute('href').replace('#', ''));
-// 修改后
-var target = document.getElementById(decodeURI(event.currentTarget.getAttribute('href').replace('#', '')));
-return document.getElementById(decodeURI(link.getAttribute('href').replace('#', '')));
-```
-</pre>
-</details>
-
-### 音乐播放器
-
-[APlayer](https://github.com/MoePlayer/APlayer)
-* 版本：v1.10.1
-* 安装方法：把该项目的dist文件夹复制到themes\next\source
-* 页面跳转不打断播放（[theme-next-pjax](https://github.com/theme-next/theme-next-pjax)）
-
-### 字数统计和阅读时长
-
-[hexo-symbols-count-time](https://github.com/theme-next/hexo-symbols-count-time)
-* 版本：v0.7.0
-* 代码块不计入字数（exclude_codeblock: true）
-
-### 动态背景
-
-[theme-next-canvas-nest](https://github.com/theme-next/theme-next-canvas-nest)
-
-### 阅读进度条
-
-next主题的_config.yml里找到Reading progress bar开启
-
-### 隐藏部分分类（比如随笔）
-
-[hexo-generator-index2](https://github.com/Jamling/hexo-generator-index2)
-* 版本：v0.2.0
-
-### 禁用更新日期
-
-next主题的_config.yml > post_meta > updated_at > enable: false
-
-### 全英语链接
-
-全英语链接方便搜索引擎收录，这里简单修改hexo站点的`_config.yml`即可，下面给出本博客的配置
-
-我的`.md`文件名都是英语，所以URL > permalink可以设置为`:category/:title.html`
-
-文章的类别大多都是中文名，可以通过Category & Tag > category_map进行映射
-
-```yml
-# URL
-:category/:title.html
-
-# Category & Tag
-category_map:
-  随笔: essay
-  技术: tech
-  开箱: unbox
-```

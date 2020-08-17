@@ -317,6 +317,7 @@ sudo pacman -S --noconfirm discord
 linux_kernel_ver=$(mhwd-kernel -li | grep -oP 'linux\d+' | head -n 1)
 sudo pacman -S --noconfirm virtualbox $linux_kernel_ver-virtualbox-host-modules
 sudo gpasswd -a $USER vboxusers
+sudo pacman -S --noconfirm smplayer
 ```
 
 ## 汉化包
@@ -639,6 +640,23 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 自带的grub有点丑，而且分辨率还比较低，可以在`/etc/default/grub`修改，或者直接用带有GUI界面的`grub-customizer`，可以通过pacman或者yay安装。
 
 其实还能直接安装配置好的主题，可以在[Grub Themes](https://www.gnome-look.org/browse/cat/109/ord/rating/)下载。
+
+# 亮度精准调节
+
+自带的xfce4-power-manager虽然可以接管笔记本上的亮度按键，但是每按一次的变化量是10，实在是太大了。更过分的是，Power Manager居然还不让配置step参数，导致如果想继续使用Power Manager，就只能自行修改源码重新编译。
+
+编译是不可能编译的，搞不好又出什么诡异的问题！
+
+所以首先就要关闭Power Manager对亮度按键的接管（Handle display brightness keys），然后使用命令行工具`xorg-xbacklight`来调节亮度。亮度的范围是0-100，直接输入`xbacklight`就可以看到当前亮度。需要调节亮度，可以在`xbacklight`后面带上变化量。
+
+当然不可能每次都敲命令调节亮度，所以要在 Settings > Keyboard > Application Shortcuts 设置快捷键。
+
+| Command       | Shortcut                |
+|---------------|-------------------------|
+| xbacklight +2 | Monitor brightness up   |
+| xbacklight -2 | Monitor brightness down |
+
+不过这么搞，就不能在调节之后马上看到亮度条了，因为亮度条是xfce4-power-manager的一部分。反正我觉得不亏，毕竟现在可以通过快捷键把亮度降得很低了。
 
 # 小结
 

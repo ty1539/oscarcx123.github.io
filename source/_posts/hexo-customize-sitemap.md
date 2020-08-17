@@ -1,5 +1,5 @@
 ---
-title: Hexo生成自定义sitemap
+title: Hexo博客生成自定义sitemap
 date: 2020-08-16 04:52:39
 categories:
   - 技术
@@ -190,4 +190,22 @@ sitemap:
 
 # Google收录
 
-未完待续。。。
+打开[Google Search Console](https://search.google.com/search-console/sitemaps)，找到左上角的下拉菜单，点击“添加资源”。
+
+在弹出的页面，选择“网址前缀”，然后输入博客地址。
+
+接下来需要验证网站所有权，这里选择`HTML标记`，直接复制整行元标记，内容如下（这里隐去content具体内容）
+
+```html
+<meta name="google-site-verification" content="*******************************************" />
+```
+
+把`content`的字符串复制出来（不带引号），粘贴到next主题根目录的`_config.yml`的`google_site_verification`
+
+```yml
+# Google Webmaster tools verification.
+# See: https://www.google.com/webmasters
+google_site_verification: （粘贴到这里）
+```
+
+搞定之后，验证就能通过了。然后在Google Search Console左侧找到站点地图，输入sitemap网址（一般填写sitemap.xml），提交下就大功告成了！
