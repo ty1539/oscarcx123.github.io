@@ -57,13 +57,17 @@ with open(filename) as f:
     music_list = list(reader)[1:]
 
 # 生成JSON对象
+# music_list[i] = [name, artist, url, cover]
+# url / cover 为空时，会使用name代替
 result = []
 for i in range(len(music_list)):
     data = {}
     data['name'] = music_list[i][0]
     data['artist'] = music_list[i][1]
-    data['url'] = repo_url + 'song/' + music_list[i][0] + '.mp3'
-    data['cover'] = repo_url + 'cover/' + music_list[i][0] + '.jpg'
+    mp3_file_name = music_list[i][2] if music_list[i][2] else music_list[i][0]
+    data['url'] = repo_url + 'song/' + mp3_file_name + '.mp3'
+    cover_name = music_list[i][3] if music_list[i][3] else music_list[i][0]
+    data['cover'] = repo_url + 'cover/' + cover_name + '.jpg'
     result.append(data)
 
 # 写入music.js

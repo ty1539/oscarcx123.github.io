@@ -135,5 +135,17 @@ const ap = new APlayer({
         "artist": "Nana Takahashi",
         "url": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/song/惑星☆ロリポップ.mp3",
         "cover": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/cover/惑星☆ロリポップ.jpg"
+    },
+    {
+        "name": "もののけ姫",
+        "artist": "久石 譲",
+        "url": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/song/もののけ姫.mp3",
+        "cover": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/cover/もののけ姫.jpg"
+    },
+    {
+        "name": "アシタカとサン",
+        "artist": "久石 譲",
+        "url": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/song/アシタカとサン.mp3",
+        "cover": "https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/music/cover/もののけ姫.jpg"
     }
 ]});
