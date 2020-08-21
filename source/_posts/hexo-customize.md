@@ -1,5 +1,5 @@
 ---
-title: Hexo博客个性化
+title: Hexo博客个性化配置
 date: 2020-08-17 00:57:02
 categories:
   - 技术
@@ -125,3 +125,74 @@ category_map:
   技术: tech
   开箱: unbox
 ```
+
+# sitemap
+
+[hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
+
+生成sitemap的脚本在./node_modules/hexo-generator-sitemap/sitemap.xml，模板语言是`nunjucks`
+
+## 使用自定义sitemap.xml
+
+在Hexo博客根目录的`_config.yml`添加下面内容
+
+```yml
+# sitemap
+sitemap:
+  template: ./source/.sitemap.xml
+```
+
+## 魔改sitemap.xml
+
+添加了下面这个条件判断，这里post.categories !== undefineds 是为了筛掉没有category属性的非文章页面（例如分类页和tag页），通过and短路防止后面报错。
+
+```
+{% if post.categories !== undefined and post.categories.data[0].name == '技术' %}
+```
+
+完整`sitemap.xml`如下
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for post in posts %}{% if post.categories !== undefined and post.categories.data[0].name == '技术' %}
+  <url>
+    <loc>{{ post.permalink | uriencode }}</loc>
+    {% if post.updated %}
+    <lastmod>{{ post.updated | formatDate }}</lastmod>
+    {% elif post.date %}
+    <lastmod>{{ post.date | formatDate }}</lastmod>
+    {% endif %}
+  </url>
+  {% endif %}{% endfor %}
+  
+  <url>
+    <loc>{{ config.url | uriencode }}</loc>
+    <lastmod>{{ sNow | formatDate }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+## Google收录
+
+打开[Google Search Console](https://search.google.com/search-console/sitemaps)，找到左上角的下拉菜单，点击“添加资源”。
+
+在弹出的页面，选择“网址前缀”，然后输入博客地址。
+
+接下来需要验证网站所有权，这里选择`HTML标记`，直接复制整行元标记，内容如下（这里隐去content具体内容）
+
+```html
+<meta name="google-site-verification" content="*******************************************" />
+```
+
+把`content`的字符串复制出来（不带引号），粘贴到next主题根目录的`_config.yml`的`google_site_verification`
+
+```yml
+# Google Webmaster tools verification.
+# See: https://www.google.com/webmasters
+google_site_verification: （粘贴到这里）
+```
+
+搞定之后，验证就能通过了。然后在Google Search Console左侧找到站点地图，输入sitemap网址（一般填写sitemap.xml），提交下就大功告成了！

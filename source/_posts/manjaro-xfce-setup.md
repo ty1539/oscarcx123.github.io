@@ -8,6 +8,8 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
+最后更新时间：2020-08-20
+
 <!--more-->
 
 # 坑爹的Win10
@@ -77,7 +79,7 @@ sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay
 
 pacman不会用的话，直接输入`tldr pacman`就可以看到最常见的用法了，压根不用看又臭又长的man page。
 
-# 安装输入法
+# 安装输入法（fcitx5）
 
 这里直接推荐新版的[fcitx5](https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))，原来的fcitx就不要再用了。
 
@@ -113,7 +115,7 @@ Settings > Session and Startup > Application Autostart，点击add就可以填�
 ```
 Name: fcitx5
 Description: 拼音输入法
-Command: fcitx5 > /dev/null 2>&1
+Command: nohup fcitx5 > /dev/null 2>&1 &
 Trigger: on login
 ```
 
@@ -635,11 +637,6 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 
 在弹出的窗口，找到Configuration，会看到Built-in Audio Profile的下拉菜单，选择Digital Stereo (HDMI) Output即可。如果要切换回来就选Analog Stereo Output。如果没找到想要的输出设备，可以用`aplay -l`查看所有声卡和音频设备（List all soundcards and digital audio devices）。
 
-# 自定义grub
-
-自带的grub有点丑，而且分辨率还比较低，可以在`/etc/default/grub`修改，或者直接用带有GUI界面的`grub-customizer`，可以通过pacman或者yay安装。
-
-其实还能直接安装配置好的主题，可以在[Grub Themes](https://www.gnome-look.org/browse/cat/109/ord/rating/)下载。
 
 # 亮度精准调节
 
@@ -658,8 +655,126 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 
 不过这么搞，就不能在调节之后马上看到亮度条了，因为亮度条是xfce4-power-manager的一部分。反正我觉得不亏，毕竟现在可以通过快捷键把亮度降得很低了。
 
+# 自定义grub
+
+自带的grub有点丑，而且分辨率还比较低，可以在`/etc/default/grub`修改，或者直接用带有GUI界面的`grub-customizer`，可以通过pacman或者yay安装。
+
+其实还能直接安装配置好的主题，可以在[Grub Themes](https://www.gnome-look.org/browse/cat/109/ord/rating/)下载。
+
+# 新建文件Template
+
+在Windows系统上，右键点击空白处就可以新建各类文件，相比之下Manjaro默认只能新建Empty File，所以可以添加一些常用的template。
+
+正常情况下template文件都存在`～/Templates`，可以通过`cat ~/.config/user-dirs.dirs`确认。如果不是，那可以用下面命令修改。
+
+```
+xdg-user-dirs-update --set TEMPLATES ~/Templates
+```
+
+只需要把一个空的对应格式的文件（注意不是新建Empty File然后改后缀名）放进`～/Templates`，template的文件名将会是右键菜单显示的名字，最后log out再log in就能生效了。
+
+xfce Thunar官方的文档可以看[Working with Files and Folders](https://docs.xfce.org/xfce/thunar/working-with-files-and-folders)
+
+参考文章：[Thunar Create Document > / General discussion / Xfce Forums](https://forum.xfce.org/viewtopic.php?id=11873)
+
+# conky
+
+conky是一个能在桌面展示信息的软件，类似Android上的widget。
+
+## 安装
+
+用下面命令安装，conky-manager是带GUI的配置工具，装不装都行，好像也用不上。
+
+```
+sudo pacman -S --noconfirm conky conky-manager
+```
+
+然后顺手在Settings > Session and Startup > Application Autostart设置下开机启动。
+
+```
+Name: conky
+Description: light-weight system monitor
+Command: nohup conky > /dev/null 2>&1 &
+Trigger: on login
+```
+
+## 配置
+
+`conky --print-config`可以输出默认配置，所以使用下面命令生成配置文件
+
+```
+mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
+```
+
+所有的配置项可以看[Configuration Settings](http://conky.sourceforge.net/config_settings.html)，文档本身清晰明了，我就提几个重点配置项。
+
+### 保持在桌面上
+
+先说最重要的，在默认配置下，如果点击桌面空白处，conky窗口就没了。。。
+
+网上答案五花八门，实际上把`own_window_hints`改成`'below'`就解决了。
+
+参考内容：[Conky disappears when I click on the desktop #205](https://github.com/brndnmtthws/conky/issues/205)
+
+### 窗口位置
+
+`alignment`、`gap_x`、`gap_y`一起决定了conky在桌面上的位置。
+
+### 字体
+
+已安装的字体可以通过`fc-list`配合`grep`来查找。如果你确定安装了某个字体但是没找到，可以用`fc-cache -f -v`刷新字体缓存。下面给出搜索`文泉驿`字体的例子
+
+```bash
+$ fc-list | grep -i Micro
+/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei,文泉驛微米黑,文泉驿微米黑:style=Regular
+/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei Mono,文泉驛等寬微米黑,文泉驿等宽微米黑:style=Regular
+```
+
+用不用等宽字体（Mono）看需求，等宽字体没那么好看，但是可以对齐。如果要指定style，可以在字体名后面加上`:style=xxx`。下面给出我的配置。
+
+```
+conky.config = {
+    font = 'WenQuanYi Micro Hei Mono:size=12'
+}
+```
+
+### 透明背景
+
+```
+conky.config = {
+    own_window_transparent = true,
+    own_window_argb_visual = true,
+}
+```
+
+### 显示内容
+
+依葫芦画瓢去修改配置文件的`conky.text`部分即可。conky的wiki也收集了一些[很漂亮的配置方案](https://github.com/brndnmtthws/conky/wiki/Configs)。
+
+内置变量可以看[Conky Objects](http://conky.sourceforge.net/variables.html)
+
+## 配合gcalcli
+
+`gcalcli`是Google Calendar的开源第三方命令行工具，使用下面命令安装
+
+```
+yay -S --noconfirm gcalcli
+```
+
+`gcalcli`需要`client_id`和`client_secret`才能工作，本来`gcalcli`可以自动引导获取的，但是这个操作貌似被Google禁止了，所以需要手动获取。在[Google Calendar API Quickstart](https://developers.google.com/calendar/quickstart/python)点击“Enable the Google Calendar API”来快速获取。拿到之后运行下面命令就可以绑定了。
+
+```
+gcalcli --client_id=YOUR_ID --client_secret=YOUR_SECRET agenda
+```
+
+最后把下面这行放进conky配置文件的`conky.text`就大功告成了。
+
+```
+${execpi 300 gcalcli --conky agenda}
+```
+
+参考内容：[Sign in with Google temporarily disabled for this app #497](https://github.com/insanum/gcalcli/issues/497)
+
 # 小结
 
 目前要调教的地方基本上就这么多，后续有发现新的内容会继续更新。
-
-前面全部使用用命令行调教是有原因的，就是为了搞一键装机脚本，炸机之后可以快速配置环境。
