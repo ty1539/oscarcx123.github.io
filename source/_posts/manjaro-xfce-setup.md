@@ -637,7 +637,6 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 
 在弹出的窗口，找到Configuration，会看到Built-in Audio Profile的下拉菜单，选择Digital Stereo (HDMI) Output即可。如果要切换回来就选Analog Stereo Output。如果没找到想要的输出设备，可以用`aplay -l`查看所有声卡和音频设备（List all soundcards and digital audio devices）。
 
-
 # 亮度精准调节
 
 自带的xfce4-power-manager虽然可以接管笔记本上的亮度按键，但是每按一次的变化量是10，实在是太大了。更过分的是，Power Manager居然还不让配置step参数，导致如果想继续使用Power Manager，就只能自行修改源码重新编译。
@@ -677,7 +676,7 @@ xfce Thunar官方的文档可以看[Working with Files and Folders](https://docs
 
 参考文章：[Thunar Create Document > / General discussion / Xfce Forums](https://forum.xfce.org/viewtopic.php?id=11873)
 
-# conky
+# 桌面挂件（conky）
 
 conky是一个能在桌面展示信息的软件，类似Android上的widget。
 
@@ -689,12 +688,12 @@ conky是一个能在桌面展示信息的软件，类似Android上的widget。
 sudo pacman -S --noconfirm conky conky-manager
 ```
 
-然后顺手在Settings > Session and Startup > Application Autostart设置下开机启动。
+然后顺手在Settings > Session and Startup > Application Autostart设置下开机启动。这里使用`sleep 5`是要确保conky在网络连接后启动，否则有些需要网络的命令（例如gcalcli）可能获取不到信息。
 
 ```
 Name: conky
 Description: light-weight system monitor
-Command: nohup conky > /dev/null 2>&1 &
+Command: sh -c "sleep 5 && nohup conky > /dev/null 2>&1 &"
 Trigger: on login
 ```
 
