@@ -128,45 +128,11 @@ WEPE官网只分发exe格式的一键安装器，我试图用wine运行，结果
 
 ![](https://raw.githubusercontent.com/oscarcx123/hexo_resource/master/img/usb_boot_winpe_and_linux_via_grub2_5.png)
 
-`WePE_64_V2.0.iso`文件的树状目录结构如下，可以挂载光盘镜像或者用压缩软件来提取
-
-```
-WePE_64_V2.0.iso/
-├── BOOTMGR
-├── EFI
-│   ├── BOOT
-│   │   └── bootx64.efi
-│   └── MICROSOFT
-│       └── BOOT
-│           └── BCD
-└── WEPE
-    ├── B64
-    ├── MESSAGE
-    ├── PELOAD
-    ├── WEIPE
-    ├── WEPE64
-    ├── WEPE64.WIM
-    ├── WEPE.INI
-    ├── WEPE.SDI
-    └── WEPE.TXT
-```
-
 # 手动安装WEPE
 
-此时U盘的esp目录结构如下（挂载点是`/mnt`）
-
-```
-/mnt
-├── boot
-│   └── grub
-└── EFI
-    └── BOOT
-```
-
-这里需要进行下面操作：
+此时U盘esp目录的挂载点是`/mnt`，这里需要进行下面操作：
 * 把/WEPE复制到`/mnt`
 * 把/EFI/MICROSOFT复制到`/mnt/EFI`
-
 
 操作完之后，U盘的esp目录结构如下
 
@@ -180,27 +146,33 @@ WePE_64_V2.0.iso/
 └── WEPE
 ```
 
+进入`BOOT`文件夹就会发现，里头只有BCD文件，还少一个`bootmgfw.efi`。我当时在安装Manjaro Linux的时候，留了一个30GB的win10来救急。因为Linux会自动把esp挂载到`/boot/efi`，所以直接在本机的esp分区 > EFI > Microsoft > Boot就可以找到到`bootmgfw.efi`，最后复制到U盘的`BOOT`文件夹就行了。
 
-进入/mnt/EFI/MICROSOFT/BOOT就会发现，里头只有BCD文件，还少一个`bootmgfw.efi`。我当时在安装Manjaro Linux的时候，留了一个30GB的win10来救急。因为Linux里头会自动把esp挂载到`/boot/efi`，所以直接在EFI > Microsoft > Boot就可以找到到`bootmgfw.efi`，最后复制到U盘上相同的地方就可以了。
+# 存放其它iso
 
-# 存放Linux iso
-
-Linux的iso是不用解压就能直接引导的，所以直接存放在NTFS分区即可，甚至还可以分类摆放。
+Linux的iso是不用解压就能直接引导的，所以直接存放在NTFS分区即可，甚至还可以分类摆放。Windows的iso是可以在WinPE里头直接安装的，所以也放在NTFS分区。下面给出示例结构。
 
 ```
-.
-└── iso
-    └── Linux
-        ├── ubuntu-16.04.7-desktop-amd64.iso
-        ├── ubuntu-18.04.5-desktop-amd64.iso
-        └── ubuntu-20.04.1-desktop-amd64.iso
+NTFS分区
+├── Linux
+│   ├── deepin-20Beta-desktop-amd64.iso
+│   ├── Fedora-Workstation-Live-x86_64-32-1.6.iso
+│   ├── manjaro-xfce-20.0.3-200606-linux56.iso
+│   └── ubuntu-20.04.1-desktop-amd64.iso
+├── Utils
+│   ├── clonezilla-live-2.6.7-28-amd64.iso
+│   └── gparted-live-1.1.0-5-amd64.iso
+└── Windows
+    ├── Win10_1903_V1_zh-CN_x64.iso
+    ├── Win7_ultimate_zh-CN_x64.iso
+    └── WinXP_SP3_EN_x86.iso
 ```
 
 # grub.cfg
 
 grub的配置文件就五花八门了，一般都是自己拼凑，再加上看文档，就能捣鼓出来。官方说明书可以看[GNU GRUB Manual 2.04](https://www.gnu.org/software/grub/manual/grub/grub.html)，英语水平不行的话，可以看[GRUB2配置文件“grub.cfg”详解(GRUB2实战手册)](http://www.jinbuguo.com/linux/grub.cfg.html)
 
-下面就提供一些可以依葫芦画瓢抄走的grub配置。
+下面就提供一些可以依葫芦画瓢抄走的grub配置，我也在本文末尾提供了自用的`grub.cfg`，给各位参考。
 
 ## grub主题
 

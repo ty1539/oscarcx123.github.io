@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-08-20
+最后更新时间：2020-08-26
 
 <!--more-->
 
@@ -631,11 +631,90 @@ Battery Monitor属于xfce4-battery-plugin，设置项丰富，可以在托盘展
 
 # 双显示器（HDMI）
 
+## 用GUI设置
+
+正常情况下，GUI点几下还是非常方便的，没有特殊需求的话，建议用GUI操作。
+
+### 设置显示输出
+
 显示设置项在Settings > Display，系统默认是mirror displays，取消勾选，然后点Apply，就搞定了。
+
+### 设置声音输出
 
 声音输出跟Windows不一样，是要分开设置的。点右下角托盘的喇叭 > Audio mixer，或者终端直接输入`pavucontrol`（GTK）/ `pavucontrol-qt`（Qt）。
 
 在弹出的窗口，找到Configuration，会看到Built-in Audio Profile的下拉菜单，选择Digital Stereo (HDMI) Output即可。如果要切换回来就选Analog Stereo Output。如果没找到想要的输出设备，可以用`aplay -l`查看所有声卡和音频设备（List all soundcards and digital audio devices）。
+
+## 用命令行设置
+
+当然，如果不想每次外接显示器都这么点几下，或者想写进自动化脚本，可以直接用万能的命令行。
+
+### 设置显示输出
+
+这里用`xrandr`进行设置。
+
+首先，使用`-q`或者`--query`查看当前能用的显示器，这里节选部分输出展示。
+
+```
+$ xrandr -q
+Screen 0: minimum 8 x 8, current 3840 x 1080, maximum 32767 x 32767
+eDP1 connected primary 1920x1080+0+0 (normal left inverted right x axis y axis) 340mm x 190mm
+   1920x1080     60.03*+  59.93    
+HDMI1 connected 1920x1080+1920+0 (normal left inverted right x axis y axis) 890mm x 500mm
+   1920x1080     60.00*+  59.94    30.00    24.00    29.97    23.98  
+```
+
+可以看到笔记本自带的`eDP1`和外接的`HDMI1`，这里可以用下面命令，把`HDMI1`拼接到`eDP1`的右边。
+
+```bash
+# --auto 以系统偏好的分辨率（最大分辨率）
+# 如无特殊需求，直接 --auto 即可
+xrandr --output HDMI1 --auto --right-of eDP1
+
+# --mode 可以制定可用的分辨率（xrandr -q 可以查看）
+xrandr --output HDMI1 --mode 1280x720 --right-of eDP1
+```
+
+参考文章：[Xrandr (简体中文) - ArchWiki](https://wiki.archlinux.org/index.php/Xrandr_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
+### 设置声音输出
+
+这里用`pactl`（选项少）和`pacmd`（选项多，有交互式环境）进行设置，因为自带的`pavucontrol`只提供GUI设置，对应的命令行也是用来打开GUI的。
+
+首先使用`pacmd`的`list-cards`查看声卡信息（或者直接输入`pacmd`进入交互式环境）。这里由于输出了近百行的内容，因此删去大量无关紧要的信息。
+
+```
+$ pacmd list-cards
+1 card(s) available.
+	name: <alsa_card.pci-0000_00_1f.3>
+	profiles:
+		input:analog-stereo: Analog Stereo Input (priority 65, available: unknown)
+		output:analog-stereo: Analog Stereo Output (priority 6500, available: unknown)
+		output:analog-stereo+input:analog-stereo: Analog Stereo Duplex (priority 6565, available: unknown)
+		output:hdmi-stereo: Digital Stereo (HDMI) Output (priority 5900, available: unknown)
+		output:hdmi-stereo+input:analog-stereo: Digital Stereo (HDMI) Output + Analog Stereo Input (priority 5965, available: unknown)
+		off: Off (priority 0, available: unknown)
+	active profile: <output:hdmi-stereo+input:analog-stereo>
+```
+
+这里`name`就是声卡名字，`profiles`是输入输出的方案。
+
+然后可以用`pactl`或者`pacmd`来设置，一般来说只会在下面两个方案之间切，注意命令里头的`声卡名字`需要自行替换。
+
+```bash
+# 命令格式（pacmd）：pacmd set-card-profile <NAME> <PROFILE>
+# 命令格式（pactl）：pactl set-card-profile <NAME> <PROFILE>
+
+# 没有外接显示器 / 外接不带音响的显示器
+# Analog Stereo Duplex -> output:analog-stereo+input:analog-stereo
+pacmd set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo+input:analog-stereo
+
+# 外接带音响的显示器（例如电视）
+# Digital Stereo (HDMI) Output + Analog Stereo Input -> output:hdmi-stereo+input:analog-stereo
+pacmd set-card-profile alsa_card.pci-0000_00_1f.3 output:hdmi-stereo+input:analog-stereo
+```
+
+参考资料：[PulseAudio/Examples - ArchWiki](https://wiki.archlinux.org/index.php/PulseAudio/Examples)
 
 # 亮度精准调节
 
