@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-08-26
+最后更新时间：2020-08-28
 
 <!--more-->
 
@@ -30,7 +30,7 @@ tags:
 
 # Manjaro下载安装
 
-Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop_environment)的版本，都可以在[下载页面](https://manjaro.org/download/)找到。我个人偏向xfce，因为相对比较轻量，而且之前用的树梅派也是xfce。
+Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop_environment)的版本，都可以在[下载页面](https://manjaro.org/download/)找到。我个人偏向xfce，因为相对比较轻量，而且之前用的树梅派也是xfce。据说kde也很不错，兼顾了特效、功能、轻量，用的人也挺多，有兴趣的可以试试，我是不想折腾了。
 
 下载`.iso`文件还是相当容易的，如果直接下载比较慢的话，可以通过种子来下载。
 
@@ -38,7 +38,7 @@ Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop
 
 但是我手头没U盘，咋办？这里我用的是`DriveDroid`这个app来把拥有root权限的安卓手机变成启动盘。只需要把Manjaro镜像文件拷进去，然后挂载，就可以当启动盘用了，还是相当方便的。
 
-安装基本上就是一路确定，然后swap分区可以不给，因为现在物理内存已经足够大了。办公套件可以先选择不装，毕竟LibreOffice使用体验确实不咋地，打开中文文档的时候感觉卡顿特别严重。
+安装基本上就是一路确定，如果用不到休眠（hibernate），那么swap分区可以不给。办公套件建议先选择不装，毕竟LibreOffice使用体验确实不咋地，打开中文文档的时候感觉卡顿特别严重。安装完成之后可以去下载WPS，体验吊打LibreOffice。
 
 # sudo免密码
 
@@ -88,10 +88,11 @@ sudo pacman -S --noconfirm fcitx5
 sudo pacman -S --noconfirm fcitx5-qt
 sudo pacman -S --noconfirm fcitx5-gtk
 sudo pacman -S --noconfirm fcitx5-chinese-addons
+sudo pacman -S --noconfirm fcitx5-configtool
 yay -S --noconfirm fcitx5-pinyin-zhwiki
 ```
 
-可以通过带GUI的fcitx5-configtool来修改配置，或者跟我一样手动修改配置。
+推荐通过带GUI的fcitx5-configtool来修改配置，因为所见即所得，而且下面的内容也可以直接跳过不看。我配置的时候还没有fcitx5-configtool，所以下面记录了手动配置过程。
 
 切记：在修改任何配置之前，确保fcitx5已经退出，懒人可以运行下面的命令。（其实还可以直接右键点击右下角托盘图标，然后退出）
 
@@ -358,6 +359,12 @@ rm ~/.local/share/keyrings/*
 Chrome：Settings > Page zoom
 
 Firefox：Preferences > Zoom > Default zoom
+
+### Chrome用触摸板滑动没有惯性
+
+这个功能叫smooth scrolling（用inertial或kinetic也能搜到这类问题），Chrome好像不支持libinput，所以目前无解。
+
+Bug tracker：[763791 - Please support libinput kinetic scrolling. - chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=763791)
 
 ### Discord强制要求更新
 
@@ -757,7 +764,9 @@ xfce Thunar官方的文档可以看[Working with Files and Folders](https://docs
 
 # 桌面挂件（conky）
 
-conky是一个能在桌面展示信息的软件，类似Android上的widget。
+conky是一个能在桌面展示信息的开源项目，类似Android上的widget。
+
+除了下面我试过的这些用法，还可以看看[Conky/Tips and tricks - ArchWiki](https://wiki.archlinux.org/index.php/Conky/Tips_and_tricks)。
 
 ## 安装
 
@@ -774,6 +783,14 @@ Name: conky
 Description: light-weight system monitor
 Command: sh -c "sleep 5 && nohup conky > /dev/null 2>&1 &"
 Trigger: on login
+```
+
+或者也可以把下面内容写到`～/.conky`下面的`conky-startup.sh`，然后开机启动那里的`Command`修改为用`sh`执行这个脚本。
+
+```
+sleep 5
+nohup conky > /dev/null 2>&1 &
+exit 0
 ```
 
 ## 配置
@@ -831,7 +848,7 @@ conky.config = {
 
 内置变量可以看[Conky Objects](http://conky.sourceforge.net/variables.html)
 
-## 配合gcalcli
+## 显示gcalcli
 
 `gcalcli`是Google Calendar的开源第三方命令行工具，使用下面命令安装
 
@@ -852,6 +869,167 @@ ${execpi 300 gcalcli --conky agenda}
 ```
 
 参考内容：[Sign in with Google temporarily disabled for this app #497](https://github.com/insanum/gcalcli/issues/497)
+
+### 修改颜色
+
+很奇怪，以前文档应该是有写这些，但是现在没找到。
+
+```
+--[no]color: Enable/Disable all color output
+    (default: 'true')
+--color-border: Color of line borders
+    (default: 'white')
+--color-date: Color for the date
+    (default: 'yellow')
+--color-freebusy: Color for free/busy calendars
+    (default: 'default')
+--color-now-marker: Color for the now marker
+    (default: 'brightred')
+--color-owner: Color for owned calendars
+    (default: 'cyan')
+--color-reader: Color for read-only calendars
+    (default: 'magenta')
+--color-writer: Color for writable calendars
+    (default: 'green')
+```
+
+例如下面就是把日期从默认的黄色改成绿色
+
+```
+gcalcli --conky agenda --color-date green
+```
+
+参考文章：[[SOLVED] Some help with Conky (related to gcalcli)](https://forums.bunsenlabs.org/viewtopic.php?id=1717)
+
+## 显示天气
+
+### OpenWeatherMap
+
+网站上给出了很清晰的[注册教程](https://openweathermap.org/guide)，跟着走就能拿到API key了。
+
+建议使用[One Call API](https://openweathermap.org/api/one-call-api)，一次请求就能获取这些信息：
+* 当前天气
+* 1小时内的每分钟预测
+* 48小时内的每小时预测
+* 7天内的每天预测
+* 过去5天的天气信息
+
+要注意的是，白嫖帐号每天只能调用1000次One Call API，只要刷新频率不是太高的话，应该是完全够用的。
+
+这里给出自用代码，需要自行提供经纬度和API key。
+
+```py
+import json
+import requests
+from datetime import datetime
+
+def to_utc_format(unix_timestamp):
+    return datetime.utcfromtimestamp(unix_timestamp).strftime('%Y-%m-%d %H:%M:%S')
+
+def to_24h_format(unix_timestamp):
+    return datetime.utcfromtimestamp(unix_timestamp).strftime('%H:%M')
+
+def to_mmdd_format(unix_timestamp):
+    return datetime.utcfromtimestamp(unix_timestamp).strftime('%m/%d')
+
+# 配置项
+# 经度（东西地理位置）
+longitude = <YOUR_LONGITUDE>
+# 纬度（南北地理位置）
+latitude = <YOUR_LATITUDE>
+# 计量单位（°C -> metric，°F -> imperial，K -> 留空）
+units = "metric"
+# API key
+appid = <YOUR_API_KEY>
+# 展示未来X小时的天气
+hourly_forecast_cnt = 3
+# 展示未来X天的天气
+daily_forecast_cnt = 3
+# 当前天气颜色
+curr_color = "red"
+# 未来X小时的天气颜色
+hourly_color = "red"
+# 未来X天的天气颜色
+daily_color = "red"
+
+url = f"http://api.openweathermap.org/data/2.5/onecall?lat={latitude}&lon={longitude}&units={units}&appid={appid}"
+res = requests.get(url)
+weather_info = res.json()
+
+'''
+# 本段代码用于测试API
+with open("weather.json") as f:
+    weather_info = json.load(f)
+'''
+
+# 输出结果顶部空一行（个人喜好）
+output = "\n"
+
+# 当前天气
+# ["weather"]是list，可能会同时存在多种天气，这里只取第一个天气，如果要读取全部可以自行套个for循环。
+timezone_offset = int(weather_info["timezone_offset"])
+curr_time = to_24h_format(int(weather_info["current"]["dt"]) + timezone_offset)
+curr_temp = round(weather_info["current"]["temp"])
+curr_weather = weather_info["current"]["weather"][0]["main"]
+curr_description = weather_info["current"]["weather"][0]["description"]
+output += f"${{color {curr_color}}}"
+output += f"【{curr_time}】{curr_temp}°C, {curr_weather} ({curr_description})\n"
+output += "${color}"
+
+# 获取未来X小时的预测
+for idx in range(1, hourly_forecast_cnt + 1):
+    ftr_time = to_24h_format(int(weather_info["hourly"][idx]["dt"]) + timezone_offset)
+    ftr_temp = round(weather_info["hourly"][idx]["temp"])
+    ftr_weather = weather_info["hourly"][idx]["weather"][0]["main"]
+    ftr_rain_perc = weather_info["hourly"][idx]["pop"]
+    output += f"${{color {hourly_color}}}"
+    output += f"【{ftr_time}】{ftr_temp}°C, {ftr_weather}, {round(ftr_rain_perc * 100)}% Rain\n"
+    output += "${color}"
+
+# 未来X天预测
+for idx in range(1, daily_forecast_cnt + 1):
+    ftr_time = to_mmdd_format(int(weather_info["daily"][idx]["dt"]) + timezone_offset)
+    ftr_temp_min = round(weather_info["daily"][idx]["temp"]["min"])
+    ftr_temp_max = round(weather_info["daily"][idx]["temp"]["max"])
+    ftr_weather = weather_info["daily"][idx]["weather"][0]["main"]
+    ftr_rain_perc = weather_info["daily"][idx]["pop"]
+    output += f"${{color {daily_color}}}"
+    output += f"【{ftr_time}】{ftr_temp_min}-{ftr_temp_max}°C, {ftr_weather}, {round(ftr_rain_perc * 100)}% Rain\n"
+    output += "${color}"
+
+print(output)
+```
+
+最后在`conky.conf`里头添加下面这行就可以了，路径自行替换。
+
+```
+${execpi 300 python <PATH_TO_weather.py>}
+```
+
+### wttr.in
+
+如果只需要当前天气，那就直接从`wttr.in`抓就可以了，网上随便找了个，试了能用。如果要在conky里头展示颜色，那需要把终端颜色代码动态替换成conky的颜色代码。
+
+```
+curl -s wttr.in | sed -n '3,7{s/\d27\[[0-9;]*m//g;s/^..//;s/ *$//;p}'
+```
+
+参考文章：[How to add wttr.in to .conkyrc so that conky can show the weather #118](https://github.com/chubin/wttr.in/issues/118)
+
+### AccuWeather (RSS)
+
+AccuWeather的API要氪金，但是其实他们还有个RSS可以白嫖（仅限个人使用）。
+
+```
+http://rss.accuweather.com/rss/liveweather_rss.asp?metric=xxx&locCode=xxx
+metric: 0 -> °F, 1 -> °C
+locCode: 美国用户可以直接写邮编，其它地方就要用国家缩写+城市，例如“DE|FRANKFURT”
+例子：http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=NL|AMSTERDAM
+```
+
+返回内容是XML，筛选下信息就能拿到天气了。
+
+参考内容：[Conky - Really Simple Weather Script](https://bbs.archlinux.org/viewtopic.php?id=37381)
 
 # 小结
 
