@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-08-28
+最后更新时间：2020-08-29
 
 <!--more-->
 
@@ -42,7 +42,7 @@ Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop
 
 # sudo免密码
 
-每次`sudo`都要输入密码挺烦的，不过sudo免密码会降低安全性，这个各位自己衡量。
+每次`sudo`都要输入密码挺烦的，不过sudo免密码（NOPASSWD）会极大的降低安全性，这个各位自己衡量。
 
 输入下面命令来打开sudoers，这里编辑器指定为nano，因为简单好用。
 
@@ -50,10 +50,36 @@ Manjaro有好几个自带不同[DE](https://wiki.archlinux.org/index.php/Desktop
 sudo EDITOR=nano visudo
 ```
 
-在sudoers文件的最后，加上下面这句，这里需要把`your_username`替换成自己的用户名。
+接下来有两种处理方式，可以根据自己喜好选择。
+
+## 给自己免密码
+
+这个方案就特别简单粗暴，不过仅对自己有效，如果是多用户的话就得写很多行。
+
+在sudoers文件的最后，加上下面这句，这里需要把`<YOUR_USERNAME>`替换成自己的用户名。
 
 ```
-your_username ALL=(ALL) NOPASSWD: ALL
+<YOUR_USERNAME> ALL=(ALL) NOPASSWD: ALL
+```
+
+## 给wheel组免密码
+
+这个方案比较一劳永逸，修改一次之后就不需要再动sudoers文件了。
+
+首先需要把自己加入wheel组，不过这一步Manjaro已经代劳了，可以通过下面任意一条命令确认是否如此。
+
+```bash
+# 查看wheel用户组的成员
+cat /etc/group | grep wheel
+
+# 查看自己在哪些用户组
+groups $(whoami)
+```
+
+然后把下面这行取消注释，这样以后还有其他用户要免密码的话，可以直接把用户添加到wheel用户组就可以了。
+
+```
+%wheel ALL=(ALL) NOPASSWD: ALL
 ```
 
 # 更新软件包
@@ -79,16 +105,22 @@ sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay
 
 pacman不会用的话，直接输入`tldr pacman`就可以看到最常见的用法了，压根不用看又臭又长的man page。
 
+悄悄说一声，如果一个命令不知道是干啥的，可以使用`whatis`命令查询，返回的结果是man page的NAME部分。
+
 # 安装输入法（fcitx5）
 
 这里直接推荐新版的[fcitx5](https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))，原来的fcitx就不要再用了。
 
+首先安装fcitx5全家桶（fcitx5，fcitx5-qt，fcitx5-gtk，fcitx5-configtool）。
+
 ```
-sudo pacman -S --noconfirm fcitx5
-sudo pacman -S --noconfirm fcitx5-qt
-sudo pacman -S --noconfirm fcitx5-gtk
+sudo pacman -S --noconfirm fcitx5-im
+```
+
+然后安装中文输入法和zhwiki词库。
+
+```
 sudo pacman -S --noconfirm fcitx5-chinese-addons
-sudo pacman -S --noconfirm fcitx5-configtool
 yay -S --noconfirm fcitx5-pinyin-zhwiki
 ```
 
@@ -241,6 +273,8 @@ https://olime.baidu.com/py?rn=0&pn=1&ol=1&py=qingzhouyiguowanchongshan
 ## 修改主题
 
 看了一圈，一堆教程都推荐[Fcitx5-Material-Color](https://github.com/hosxy/Fcitx5-Material-Color)，看图例感觉还不错，于是依葫芦画瓢装个试试。安装方法在repo的Readme已经写的很清楚了，我就不赘述了。
+
+更多主题可以看看[拥抱 Fcitx5 | 倚窗，听雨](https://blog.lhwcrt.top/tech/welcome-to-fcitx5/)，或者在aur直接搜。
 
 # 全局emoji支持
 
@@ -1034,3 +1068,5 @@ locCode: 美国用户可以直接写邮编，其它地方就要用国家缩写+�
 # 小结
 
 目前要调教的地方基本上就这么多，后续有发现新的内容会继续更新。
+
+感谢Telegram Manjaro Linux CN群的@AsamiSaori（浅见 沙织）协助改进sudo和fcitx5部分内容～
