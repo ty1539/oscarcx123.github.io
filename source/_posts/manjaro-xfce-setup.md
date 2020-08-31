@@ -107,6 +107,81 @@ pacman不会用的话，直接输入`tldr pacman`就可以看到最常见的用�
 
 悄悄说一声，如果一个命令不知道是干啥的，可以使用`whatis`命令查询，返回的结果是man page的NAME部分。
 
+# 字体配置
+
+## 修正终端字体间距
+
+这个问题好像是只有用中文系统才会看到，英文系统是正常的。反正换个字体就好了，比如安装文泉驿字体。
+
+```
+sudo pacman -S --noconfirm wqy-microhei
+```
+
+## 查看可用字体
+
+已安装的字体可以通过`fc-list`配合`grep`来查找。如果你确定安装了某个字体但是没找到，可以用`fc-cache -f -v`刷新字体缓存。下面给出搜索`文泉驿`字体的例子
+
+```bash
+$ fc-list | grep -i Micro
+/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei,文泉驛微米黑,文泉驿微米黑:style=Regular
+/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei Mono,文泉驛等寬微米黑,文泉驿等宽微米黑:style=Regular
+```
+
+## 全局emoji支持
+
+fcitx5是支持emoji的输入的，但是试图在Chrome地址栏输入emoji会显示为黑框，所以需要配置全局emoji的支持。
+
+先安装noto-fonts-emoji，命令如下
+
+```
+sudo pacman -S --noconfirm noto-fonts-emoji
+```
+
+创建`/etc/fonts/local.conf`并写入如下内容
+
+注意：对于sans-serif，这里首选的是Noto Sans CJK SC而不是参考文章中所给出的Noto Sans。老外不用中文，所以配置不能直接照抄，否则可能会出现莫名其妙的问题。例如在用Mono来运行C# WinForm程序的时候，SystemFonts.DefaultFont.Name就会是Noto Sans而不是Noto Sans CJK SC，从而导致汉字全都显示成方框。
+
+```
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+
+ <alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Noto Sans CJK SC</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Sans</family>
+   </prefer> 
+ </alias>
+
+ <alias>
+   <family>serif</family>
+   <prefer>
+     <family>Noto Serif</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Serif</family>
+   </prefer>
+ </alias>
+
+ <alias>
+  <family>monospace</family>
+  <prefer>
+    <family>Noto Mono</family>
+    <family>Noto Color Emoji</family>
+    <family>Noto Emoji</family>
+   </prefer>
+ </alias>
+
+</fontconfig>
+```
+
+然后在Settings > Appearance > Fonts 把字体设置为Noto Sans CJK SC Regular就可以了。
+
+参考文章：[Tutorial: How to enable system-wide color emoji support](https://forum.manjaro.org/t/tutorial-how-to-enable-system-wide-color-emoji-support/35188)
+
 # 安装输入法（fcitx5）
 
 这里直接推荐新版的[fcitx5](https://wiki.archlinux.org/index.php/Fcitx5_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))，原来的fcitx就不要再用了。
@@ -275,59 +350,6 @@ https://olime.baidu.com/py?rn=0&pn=1&ol=1&py=qingzhouyiguowanchongshan
 看了一圈，一堆教程都推荐[Fcitx5-Material-Color](https://github.com/hosxy/Fcitx5-Material-Color)，看图例感觉还不错，于是依葫芦画瓢装个试试。安装方法在repo的Readme已经写的很清楚了，我就不赘述了。
 
 更多主题可以看看[拥抱 Fcitx5 | 倚窗，听雨](https://blog.lhwcrt.top/tech/welcome-to-fcitx5/)，或者在aur直接搜。
-
-# 全局emoji支持
-
-fcitx5是支持emoji的输入的，但是试图在Chrome地址栏输入emoji会显示为黑框，所以需要配置全局emoji的支持。
-
-先安装noto-fonts-emoji，命令如下
-
-```
-sudo pacman -S --noconfirm noto-fonts-emoji
-```
-
-创建`/etc/fonts/local.conf`并写入如下内容
-
-```
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
-
- <alias>
-   <family>sans-serif</family>
-   <prefer>
-     <family>Noto Sans</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-     <family>DejaVu Sans</family>
-   </prefer> 
- </alias>
-
- <alias>
-   <family>serif</family>
-   <prefer>
-     <family>Noto Serif</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-     <family>DejaVu Serif</family>
-   </prefer>
- </alias>
-
- <alias>
-  <family>monospace</family>
-  <prefer>
-    <family>Noto Mono</family>
-    <family>Noto Color Emoji</family>
-    <family>Noto Emoji</family>
-   </prefer>
- </alias>
-
-</fontconfig>
-```
-
-然后在Settings > Appearance > Fonts 把字体设置为Noto Sans CJK SC Regular就可以了。
-
-参考文章：[Tutorial: How to enable system-wide color emoji support](https://forum.manjaro.org/t/tutorial-how-to-enable-system-wide-color-emoji-support/35188)
 
 # 安装常用软件
 
@@ -576,6 +598,19 @@ code --install-extension ikuyadeu.r
 code --install-extension vscjava.vscode-java-pack
 ```
 
+如果需要编译运行C# (.Net)程序，那建议直接安装全家桶：
+* mono
+* monodevelop-bin
+* mono-msbuild
+* mono-msbuild-sdkresolver
+
+```
+sudo pacman -S --noconfirm mono
+yay -S --noconfirm monodevelop-bin
+yay -S --noconfirm mono-msbuild
+yay -S --noconfirm mono-msbuild-sdkresolver
+```
+
 # 打印机
 
 Manjaro自带[CUPS](https://wiki.archlinux.org/index.php/CUPS_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))（Common Unix Printing System），可以直接通过Web UI来进行管理，不过这里用命令行就更快更方便。
@@ -632,9 +667,47 @@ CUPS的命令行管理文档可以看[Command-Line Printer Administration](https
 
 # 触摸板
 
+跟Windows一模一样的应该只有“双指点击”（等同于右键单击）
+
+## 双指滑动和轻按
+
 Manjaro双指滑动的方向跟Windows是相反的，而且触摸板轻按无效。好在这些配置可以随意改。
 
 在 Settings > Mouse and Touchpad 可以找到键鼠相关设置，然后在Device下拉菜单那里选中自己的触摸板。在Buttons and Feedback栏目勾选Reverse scroll direction，然后在Touchpad栏目勾选Tap touchpad to click，就搞定了。
+
+## 更多手势
+
+如果需要更多手势，需要执行下面命令安装相关软件
+
+```
+sudo pacman -S --noconfirm libinput-gestures
+sudo pacman -S --noconfirm gestures
+sudo pacman -S --noconfirm xdotool
+```
+
+接下来依次执行下面命令
+
+```bash
+# 把自己（当前用户）加入input组
+sudo gpasswd -a $USER input
+# 添加开机启动
+libinput-gestures-setup autostart
+# 启动libinput-gestures
+libinput-gestures-setup start
+```
+
+然后就打开gestures添加手势就行了。如果要抄别人的配置，那就在~/.config/中找到libinput-gestures.conf，然后在文件末尾写入下面配置。
+
+```bash
+# 浏览器前进
+gesture swipe left 3	xdotool key alt+Right
+# 浏览器后退
+gesture swipe right 3	xdotool key alt+Left
+# 显示桌面
+gesture swipe down 3	sh -c 'win_name=$(xdotool getwindowfocus getwindowname); if [[ $win_name != 'Desktop' ]] && [[ $win_name != *'conky'* ]]; then xdotool key ctrl+alt+d; fi'
+# 查看所有打开的窗口
+gesture swipe up 3	sh -c 'win_name=$(xdotool getwindowfocus getwindowname); if [[ $win_name == 'Desktop' ]] || [[ $win_name == *'conky'* ]]; then xdotool key ctrl+alt+d; fi'
+```
 
 # 设置时钟
 
@@ -650,14 +723,6 @@ Manjaro双指滑动的方向跟Windows是相反的，而且触摸板轻按无效
 
 ```
 sudo timedatectl set-ntp 1
-```
-
-# 修正终端字体间距问题
-
-这个问题好像是只有用中文系统才会看到，英文系统是正常的。反正换个字体就好了，比如安装文泉驿字体。
-
-```
-sudo pacman -S --noconfirm wqy-microhei
 ```
 
 # 托盘显示电量
@@ -850,14 +915,6 @@ mkdir -p ~/.config/conky && conky --print-config > ~/.config/conky/conky.conf
 `alignment`、`gap_x`、`gap_y`一起决定了conky在桌面上的位置。
 
 ### 字体
-
-已安装的字体可以通过`fc-list`配合`grep`来查找。如果你确定安装了某个字体但是没找到，可以用`fc-cache -f -v`刷新字体缓存。下面给出搜索`文泉驿`字体的例子
-
-```bash
-$ fc-list | grep -i Micro
-/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei,文泉驛微米黑,文泉驿微米黑:style=Regular
-/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc: WenQuanYi Micro Hei Mono,文泉驛等寬微米黑,文泉驿等宽微米黑:style=Regular
-```
 
 用不用等宽字体（Mono）看需求，等宽字体没那么好看，但是可以对齐。如果要指定style，可以在字体名后面加上`:style=xxx`。下面给出我的配置。
 
