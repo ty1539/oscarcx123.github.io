@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-08-29
+最后更新时间：2020-09-03
 
 <!--more-->
 
@@ -181,6 +181,16 @@ sudo pacman -S --noconfirm noto-fonts-emoji
 然后在Settings > Appearance > Fonts 把字体设置为Noto Sans CJK SC Regular就可以了。
 
 参考文章：[Tutorial: How to enable system-wide color emoji support](https://forum.manjaro.org/t/tutorial-how-to-enable-system-wide-color-emoji-support/35188)
+
+## 安装Windows字体
+
+Linux上面当然没有Windows字体（例如Times New Roman），所以在打开一些`docx`文档的时候，排版会出问题。使用下面命令安装Microsoft字体包即可解决。
+
+```
+yay -S --noconfirm ttf-ms-fonts
+```
+
+当然还有其它带版权的Windows字体，可以通过[Microsoft fonts - ArchWiki](https://wiki.archlinux.org/index.php/Microsoft_fonts)了解更多。
 
 # 安装输入法（fcitx5）
 

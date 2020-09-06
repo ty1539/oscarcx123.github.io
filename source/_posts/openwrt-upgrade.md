@@ -240,6 +240,12 @@ Configuring luci-app-p910nd.
     * 协议：Raw
     * 端口：9100
 
+Linux则是通过CUPS配置，需要准备打印机的ppd文件，打印机地址如下所示。
+
+```
+socket://192.168.1.1:9100
+```
+
 ## 开启WIFI
 
 OpenWrt的WIFI默认是关闭的，所以需要在LuCI里头手动开启，相关设置在“网络” > “无线”里头。
