@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-09-03
+最后更新时间：2020-09-06
 
 <!--more-->
 
@@ -562,16 +562,17 @@ QQ自带的表情（不是emoji）发不出去，然后右键菜单（例如回�
 # 配置编程环境
 
 基本上我会安装这些东西：
-* R
+* R（R，R Studio）
 * Java（jre-openjdk，maven）
 * JS（nodejs，npm）
-* GitHub桌面版：鼠标点点点就可以commit和push
+* GitHub Desktop（鼠标点点点就可以commit和push）
 * Unity3d
 * Android Studio
 * VSCode
+* SQL（mariadb，mysql-workbench）
 
 ```
-yay -S --noconfirm r
+yay -S --noconfirm r rstudio-desktop-bin
 sudo pacman -S --noconfirm jre-openjdk maven
 sudo pacman -S --noconfirm nodejs npm
 yay -S --noconfirm github-desktop-bin
@@ -580,7 +581,10 @@ yay -S --noconfirm unityhub
 unityhub --headless install --version $unity_version
 yay -S --noconfirm android-studio
 sudo pacman -S --noconfirm code
+sudo pacman -S --noconfirm mariadb mysql-workbench
 ```
+
+## VSCode
 
 其中VSCode还是需要更进一步的配置。
 
@@ -608,6 +612,8 @@ code --install-extension ikuyadeu.r
 code --install-extension vscjava.vscode-java-pack
 ```
 
+## MonoDevelop
+
 如果需要编译运行C# (.Net)程序，那建议直接安装全家桶：
 * mono
 * monodevelop-bin
@@ -620,6 +626,80 @@ yay -S --noconfirm monodevelop-bin
 yay -S --noconfirm mono-msbuild
 yay -S --noconfirm mono-msbuild-sdkresolver
 ```
+
+## MariaDB
+
+数据库装完之后，如果直接运行会报下面这个错，特别坑。
+
+> ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/run/mysqld/mysqld.sock' (2)
+
+由于Arch系不会自动安装，所以要手动执行下面这句。。。
+
+```
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
+
+接下来就可以启动mariadb服务了。
+
+```
+sudo systemctl start mariadb
+```
+
+然后这里启动安全配置助手，通过交互式环境来设置安全选项，下面的选项仅供参考。
+
+```
+$ sudo mysql_secure_installation
+Enter current password for root (enter for none): 
+Switch to unix_socket authentication [Y/n] n
+Change the root password? [Y/n] n
+Remove anonymous users? [Y/n] y
+Disallow root login remotely? [Y/n] n
+Remove test database and access to it? [Y/n] y
+Reload privilege tables now? [Y/n] y
+```
+
+最后用下面命令就能进去了，sudo情况下敲什么密码都能进去，因为本身已经是root用户。
+
+```
+sudo mysql -u root -p
+```
+
+进去之后，如果想不带sudo使用mariadb，或者想用GUI来操作数据库，那还需要执行额外几个步骤，否则会出现Access Denied。
+
+首先执行下面语句查看authentication_string，可以发现root对应的是invalid，说明此时是无法直接用账户密码登录的。
+
+```
+MariaDB [(none)]> SELECT user,authentication_string,plugin,host FROM mysql.user;
++-------------+-----------------------+-----------------------+-----------+
+| User        | authentication_string | plugin                | Host      |
++-------------+-----------------------+-----------------------+-----------+
+| mariadb.sys |                       | mysql_native_password | localhost |
+| root        | invalid               | mysql_native_password | localhost |
+| mysql       | invalid               | mysql_native_password | localhost |
++-------------+-----------------------+-----------------------+-----------+
+3 rows in set (0.007 sec)
+```
+
+这个时候就需要使用下面语句设置密码，这里把密码设置成password。完成之后再查看authentication_string，就不是invalid了。顺带吐槽下，这一步mariadb的语句居然跟mysql不一样。。。
+
+```
+MariaDB [(none)]> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('password');
+Query OK, 0 rows affected (0.007 sec)
+
+MariaDB [(none)]> SELECT user,authentication_string,plugin,host FROM mysql.user;
++-------------+-------------------------------------------+-----------------------+-----------+
+| User        | authentication_string                     | plugin                | Host      |
++-------------+-------------------------------------------+-----------------------+-----------+
+| mariadb.sys |                                           | mysql_native_password | localhost |
+| root        | *2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19 | mysql_native_password | localhost |
+| mysql       | invalid                                   | mysql_native_password | localhost |
++-------------+-------------------------------------------+-----------------------+-----------+
+3 rows in set (0.002 sec)
+```
+
+到这里就大功告成了，可以使用MySQL Workbench连接，也可以不带sudo直接进入mariadb了。
+
+参考文章：[mysql - Access Denied for User 'root'@'localhost' (using password: YES) - No Privileges? - Stack Overflow](https://stackoverflow.com/questions/17975120/access-denied-for-user-rootlocalhost-using-password-yes-no-privileges)
 
 # 打印机
 
@@ -706,7 +786,7 @@ libinput-gestures-setup autostart
 libinput-gestures-setup start
 ```
 
-然后就打开gestures添加手势就行了。如果要抄别人的配置，那就在~/.config/中找到libinput-gestures.conf，然后在文件末尾写入下面配置。
+然后就打开gestures添加手势就行了。如果要抄配置，那就在~/.config/中找到libinput-gestures.conf，然后在文件末尾写入。下面给出我的配置。
 
 ```bash
 # 浏览器前进
