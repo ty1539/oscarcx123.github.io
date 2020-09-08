@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-09-06
+最后更新时间：2020-09-07
 
 <!--more-->
 
@@ -90,7 +90,7 @@ groups $(whoami)
 sudo pacman -Syu --noconfirm
 ```
 
-# 安装工具
+# 安装常用工具
 
 我一般会安装这些工具：
 * neofetch：展示系统信息
@@ -98,14 +98,18 @@ sudo pacman -Syu --noconfirm
 * you-get：下载视频必备工具，直接贴视频网站的链接就行
 * aria2：多线程下载工具
 * yay：（必备）AUR的包管理器
+* vnstat：检测网络流量的工具
 
 ```
-sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay
+sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay vnstat
 ```
 
 pacman不会用的话，直接输入`tldr pacman`就可以看到最常见的用法了，压根不用看又臭又长的man page。
 
 悄悄说一声，如果一个命令不知道是干啥的，可以使用`whatis`命令查询，返回的结果是man page的NAME部分。
+
+还有一个没用的小工具：
+* lolcat：把输出变成彩虹色
 
 # 字体配置
 
@@ -184,13 +188,13 @@ sudo pacman -S --noconfirm noto-fonts-emoji
 
 ## 安装Windows字体
 
-Linux上面当然没有Windows字体（例如Times New Roman），所以在打开一些`docx`文档的时候，排版会出问题。使用下面命令安装Microsoft字体包即可解决。
+Linux上面当然没有Windows字体（例如Times New Roman），所以在打开一些`docx`文档的时候，排版会出问题。使用下面命令可以安装Microsoft核心字体包，不过字体很少，可能不管用。
 
 ```
 yay -S --noconfirm ttf-ms-fonts
 ```
 
-当然还有其它带版权的Windows字体，可以通过[Microsoft fonts - ArchWiki](https://wiki.archlinux.org/index.php/Microsoft_fonts)了解更多。
+当然还有其它带版权的Windows字体，可以通过[Microsoft fonts - ArchWiki](https://wiki.archlinux.org/index.php/Microsoft_fonts)了解更多。这里推荐[ttf-ms-win10](https://aur.archlinux.org/packages/ttf-ms-win10/)这个包，涵盖了一百多种字体。由于带版权，所以ttf文件需要自行从Windows系统里头提取出来，具体操作流程可以阅读对应[PKGBUILD](https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ttf-ms-win10)顶部的注释部分。在执行makepkg的时候，可能会出现校验错误，因此建议带上--skipchecksums参数。如果选择安装ttf-ms-win10，那就不用安装ttf-ms-fonts，因为这两个包冲突。
 
 # 安装输入法（fcitx5）
 
@@ -570,6 +574,7 @@ QQ自带的表情（不是emoji）发不出去，然后右键菜单（例如回�
 * Android Studio
 * VSCode
 * SQL（mariadb，mysql-workbench）
+* Docker
 
 ```
 yay -S --noconfirm r rstudio-desktop-bin
@@ -582,6 +587,7 @@ unityhub --headless install --version $unity_version
 yay -S --noconfirm android-studio
 sudo pacman -S --noconfirm code
 sudo pacman -S --noconfirm mariadb mysql-workbench
+sudo pacman -S --noconfirm docker
 ```
 
 ## VSCode
@@ -700,6 +706,21 @@ MariaDB [(none)]> SELECT user,authentication_string,plugin,host FROM mysql.user;
 到这里就大功告成了，可以使用MySQL Workbench连接，也可以不带sudo直接进入mariadb了。
 
 参考文章：[mysql - Access Denied for User 'root'@'localhost' (using password: YES) - No Privileges? - Stack Overflow](https://stackoverflow.com/questions/17975120/access-denied-for-user-rootlocalhost-using-password-yes-no-privileges)
+
+## Docker
+
+首先启动docker服务并设置为开机启动
+
+```
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+```
+
+然后把当前用户加入docker组（以后不需要sudo来跑docker），改完之后记得重启电脑
+
+```
+sudo usermod -aG docker $USER
+```
 
 # 打印机
 
@@ -1081,6 +1102,32 @@ gcalcli --conky agenda --color-date green
 ```
 
 参考文章：[[SOLVED] Some help with Conky (related to gcalcli)](https://forums.bunsenlabs.org/viewtopic.php?id=1717)
+
+### 转义字符串
+
+如果输出的内容含有特殊字符，比如`#`，那么就会被conky错误识别，导致无法显示或者显示不全。这个问题在谷歌日历的待办事项中应该比较常见，比如`Quiz #1`。这里针对gcalcli给出patch方法，其它开源程序的改法可以触类旁通。
+
+首先执行下面命令找到gcalcli安装位置，返回的路径有好几个，找到类似下面带有site-packages的路径，一般来说python包都在里头。
+
+```
+python -m site
+> /usr/lib/python3.8/site-packages
+```
+
+在gcalcli文件夹中找到gcal.py，做出下面修改。
+
+```py
+# 修改前
+def _valid_title(self, event):
+    if 'summary' in event and event['summary'].strip():
+        return event['summary']
+
+# 修改后
+def _valid_title(self, event):
+    if 'summary' in event and event['summary'].strip():
+        summary = event['summary'].replace('#', '\#')
+        return summary
+```
 
 ## 显示天气
 
