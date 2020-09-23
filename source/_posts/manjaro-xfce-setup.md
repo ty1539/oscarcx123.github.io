@@ -8,7 +8,7 @@ tags:
 ---
 这两天终于下定决心再次转投Manjaro，顺手记录下安装踩坑调教全过程。
 
-最后更新时间：2020-09-07
+最后更新时间：2020-09-15
 
 <!--more-->
 
@@ -18,11 +18,11 @@ tags:
 
 最开始是笔记本长时间无操作会锁屏，重新解锁之后，WIFI就会莫名其妙的丢失连接。当时感觉问题也不大，也就是手动点两下重新连接WIFI的事，所以也没想着换系统。
 
-前一阵子搭建了NAS，然后发现其它设备都可以匿名访问，唯独Win10要求输入帐号密码。输入就输入吧，然后又发现每次启动之后都会提示“无法重新连接所有网络驱动器”，然后又得重新输入帐号密码。网上搜了一圈，发现在v2ex已经有[讨论帖](https://www.v2ex.com/t/214955)。仔细一看，居然是2015年就已经出现的bug，硬生生拖了5年，终于在win10 （ver 2004)修复了。
+前一阵子搭建了NAS，然后发现其它设备都可以匿名访问，唯独Win10要求输入帐号密码。输入就输入吧，然后又发现每次启动之后都会提示“无法重新连接所有网络驱动器”，然后又得重新输入帐号密码。网上搜了一圈，发现在v2ex已经有[讨论帖](https://www.v2ex.com/t/214955)。仔细一看，居然是2015年就已经出现的bug，硬生生拖了5年，终于在win10（ver 2004）修复了。
 
 既然修复了，那就去更新系统呗。Windows Update吭哧吭哧忙活半天，也没有给我更新到ver 2004，只是升级到了ver 1909。一进系统我就发现File Explorer不对劲，上面的地址栏都可以跑马了，感情这是越更新越丑啊。刚刚好那天下午需要打印一点文件，然后就发现这次更新直接把Print Spooler服务给搞瘫痪了。只要我一试图打印，Print Spooler服务就会自动关闭。最后弄的没办法了，开了个虚拟机来完成打印的。
 
-打印完我就在想，win10是越来越不靠谱了啊，看来是时候尝试下Linux单系统了。
+打印完我就在想，win10是越来越不靠谱了啊，看来是时候再次投奔Linux系统了。
 
 我用Linux断断续续也有两三年了，不过那会儿一直都是双系统。最开始用的是Ubuntu 16.04，后来又尝试过Raspbian (Buster)和Manjaro。要说印象最好的应该就是Manjaro了，没有繁琐的配置，但是作为滚动发行版又可以用到最新的软件，还是挺香的。
 
@@ -98,7 +98,7 @@ sudo pacman -Syu --noconfirm
 * you-get：下载视频必备工具，直接贴视频网站的链接就行
 * aria2：多线程下载工具
 * yay：（必备）AUR的包管理器
-* vnstat：检测网络流量的工具
+* vnstat：监测网络流量的工具
 
 ```
 sudo pacman -S --noconfirm neofetch tldr you-get aria2 yay vnstat
@@ -664,7 +664,7 @@ Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
 ```
 
-最后用下面命令就能进去了，sudo情况下敲什么密码都能进去，因为本身已经是root用户。
+最后用下面命令就能进去了，sudo情况下貌似敲什么密码都能进去，因为本身已经是root用户。
 
 ```
 sudo mysql -u root -p
@@ -1258,6 +1258,51 @@ locCode: 美国用户可以直接写邮编，其它地方就要用国家缩写+�
 返回内容是XML，筛选下信息就能拿到天气了。
 
 参考内容：[Conky - Really Simple Weather Script](https://bbs.archlinux.org/viewtopic.php?id=37381)
+
+# Win10更新后修复grub
+
+辣鸡Windows10，大版本更新之后就会搞坏grub，或者倒不如说他们只照顾了他们预想的东西。
+
+反正Win10更新完之后大概率会看到下面这样的黑框，这个时候别慌，其实很容易就可以修好的。
+
+```
+error: no such partition.
+Entering rescue mode...
+grub rescue>
+```
+
+首先`ls`看看分区，然后找出带有`/boot`的。
+
+```
+grub rescue> ls
+(hd0) (hd0, gpt6) (hd0, gpt5) (hd0, gpt4) (hd0, gpt3) (hd0, gpt2) (hd0, gpt1)
+grub rescue> ls (hd0, gpt6)/
+./ ../ lost+found/ boot/ dev/ proc/ run/ sys/ （后面省略）
+```
+
+这里已经发现带有`/boot`的是`(hd0, gpt6)`，这时候使用`set`看看grub所在的分区。
+
+```
+grub rescue> set
+cmdpath=(hd0, gpt2)/EFI/MANJARO
+prefix=(hd0, gpt5)/boot/grub
+```
+
+很明显，Win10更新之后做了点手脚，`/boot`已经不在`(hd0, gpt5)`，而是在`(hd0, gpt6)`，当然grub也就进不去。所以这里需要使用`set`重新给`prefix`赋值。最后使用insmod加载normal模块就可以进入grub了。
+
+```
+grub rescue> set prefix=(hd0, gpt6)/boot/grub
+grub rescue> insmod normal
+grub rescue> normal
+```
+
+当然，进了grub不代表能进入系统，还需要选中Manjaro启动项，然后按`e`修改menuentry。上面提到了分区的变化，所以这里就按照上面的结果，把所有`gpt5`换成`gpt6`，最后`ctrl+x`就可以启动系统了。
+
+到这还没完，如果不想每次启动都这么修改，那就需要更新grub。
+
+```
+sudo update-grub
+```
 
 # 小结
 

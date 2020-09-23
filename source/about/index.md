@@ -113,19 +113,21 @@ BIS是被忽悠选的，不过技术相关内容少，就当水多一个专业�
 <summary>缩减占地面积，感兴趣就看</summary>
 <pre>
 * 音游
+    * osu!mania
+        * [个人主页](https://osu.ppy.sh/users/13929448)
+        * 最高全球排名：#10,980 @ 4,555pp (2020/09/23)
+        * 下落速度：28
+        * 4k模式4.5-5.5*，567k模式能玩3*。
+        * 正在冲击全球10000名~
+            * 2020/06/02 #11,460 (4318pp)，目标4500pp，失败
     * Arcaea
         * ptt 10.22
         * 下落速度：3.5
     * Cytus
         * 只打到8级曲
         * 很久没玩了
-    * osu!mania
-        * [个人主页](https://osu.ppy.sh/users/13929448)
-        * 最高全球排名：#11,460 @ 4,318pp (2020/06/02)
-        * 下落速度：25
-        * 4k模式4.5-5.5*，567k模式能玩3*。
-        * 正在冲击全球10000名~
 * RPG
+    * Dragalia Lost
     * Pokémon
         * Core series
         * Mystery Dungeon games (Roguelike)
