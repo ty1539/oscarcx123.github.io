@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pikachu.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pikachu.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="-QMh-gRPduq5T_vg3_Pwi3kZsNSiyuEpPBaDIXV8J34">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"oscarcx123.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Azure">
+<meta property="og:url" content="https://oscarcx123.github.io/page/6/index.html">
+<meta property="og:site_name" content="Azure">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="oscarcx123">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://oscarcx123.github.io/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>Azure</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <link rel="stylesheet" href="/aplayer/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/aplayer/APlayer.min.js"></script>
+  <script type="text/javascript" src="/aplayer/music.js"></script>
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Azure</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200305.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200305.html" class="post-title-link" itemprop="url">20200305 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-05 21:53:06" itemprop="dateCreated datePublished" datetime="2020-03-05T21:53:06-05:00">2020-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>900</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-03-05 星期四</p>
+<p>今天的Econ课，教室居然空了一大半，好多人都没来上课，估计自己给自己提前放假出去玩了。今天来上课的，感觉应该差不多一半都是中国人了。因此，今天上课就是在划水，其实也没讲什么新内容。</p>
+<p>至于我嘛，因为明天没课，已经提前放假了。假期不出意外的话，就是在家里学习《现代操作系统》一书，争取一天学一章，在假期结束之前啃完。如果有余力，感觉还可以在DataCamp上面过一次Python数据分析课程。Python我自认为还算比较熟悉，但是并没有怎么接触过数据处理跟机器学习的库，所以过一次应该能收获不少东西。</p>
+<p>今天下课跟黄河聊了聊。我上次到处约人Spring Break出去玩的时候，也问过她，但是她已经提前（应该是跟她舍友）订好去墨西哥坎昆的行程了。结果最近疫情急转直下，她们怂了，没敢去，机票也没得退。。。这个，我也不知道说啥好了，我当时问了好几个都有安排，最后决定在家啃书，不知道算不算是因祸得福呢？当然，我也没幸灾乐祸的意思，毕竟现在到处跑肯定不是好事，毕竟冠状病毒现在在国外到处肆虐，而且潜伏期还长。不过我发现，我在沟通聊天方面做得还不是特别好，有时候不知道怎么去接话，没法第一时间返回一个比较优的回答。所以啊，还是需要多跟异性交流，通过实战提升水平。这次假期，看看有没有机会能够在市内约出来好了，毕竟机会还是要自己创造的，要不然以后聊天还是会很容易冷场。</p>
+<p>话说回来，她居然对我打算啃《现代操作系统》这本教材比较意外。其实吧，普通的教材我也不怎么翻的，但是这个教材不一样。作者用风趣幽默的文笔，通俗易懂的讲解了整个知识体系，看了让人欲罢不能。这大概也是此书能够被翻译成几十国语言的原因吧。</p>
+<p>晚上吃了ALDI买的三文鱼罐头，感觉不太好吃，我特么就不应该一次买四罐。。。也不知道是不是我吃的方法不对吧，估计稍微加工处理一下，会好吃一些。而且这个三文鱼罐头不是易拉罐那种设计，我虽然有开罐器但是捣鼓了几分钟也不知道怎么用，感觉十分丢人。后来实在没办法了，上网搜了个视频教程才明白用法，然后瞄了一眼评论区，原来好多网友的经历也是如出一辙啊。</p>
+<p>好了，那么，特训模式开启！争取在假期内完成既定目标！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200304.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200304.html" class="post-title-link" itemprop="url">20200304 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-04 22:47:53" itemprop="dateCreated datePublished" datetime="2020-03-04T22:47:53-05:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>607</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-03-04 星期三</p>
+<p>今天考了Strategic Management，问的都是一些开放性题目，没标准答案，反正我都写满了，至于能拿多少分，就不清楚了。</p>
+<p>今天下午又去一趟ALDI，买了$70+的东西，一大半都是罐头。今天实地考察感觉还行，也没有什么过激的抢购，不过确实有零星货架空了，不确定是不是因为抢购导致的。不过由于自身运力有限，今天没能买太多东西，这两天应该再去一次，感觉就差不多了。</p>
+<p>目前还没看到有人戴口罩，不过我自己也没有N95，所以就只能看着办了。对于Spring break没有约到人一起出去玩这事儿，我现在倒是有点庆幸了，还好没打算出去玩，要不然现在到底是去还是不去好呢？</p>
+<p>话说回来，博客添加音乐感觉十分繁琐，打算周末用Python写个小工具一键生成aplayer播放列表数据，并且获取歌曲和封面，然后自动上传GitHub。现在手动一个个下载添加，实在是太费劲了。目前打算是输入歌曲链接，然后通过youtube-dl下载，并且自动获取歌曲缩略图，然后把信息添加到csv，最后从csv生成aplayer播放列表。</p>
+<p>关于博客，今天无聊看了下traffic面板，居然发现有人clone，感觉有点吓人啊。。。我这博客也没啥好看的啊，而且clone了也没用，因为hexo是通过渲染markdown文件生成html的，所以我就写了个README给访客们指明正确的方向。</p>
+<p>今天考完试快乐摸鱼，好像没东西可以写，就这样好了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200303.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200303.html" class="post-title-link" itemprop="url">20200303 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-03 23:53:25" itemprop="dateCreated datePublished" datetime="2020-03-03T23:53:25-05:00">2020-03-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-03-03 星期二</p>
+<p>今天上一整天的课，但是下午上完课之后还是抽出时间去了一趟Trader Joe囤货。还没进店门口就看到有人大包小包往车尾箱放，但是走进店之后，又感觉人们好像并没有传闻中那样疯狂的抢购。不过，有一点是要明确的，那就是囤货跟应对食物短缺完全是两回事。现在囤货是为了将来如果疫情一旦在美国爆发，能够尽量减少出门的次数，尽量少去人流密集的地方。反正今天我买了$120的速冻食品，全部丢到了冰箱急冻。粗略看了下，急冻里头大概有三十多包速冻食品吧，大多都是饺子、云吞、炒饭什么的，基本上可以充当半个月的口粮。现在的问题在于，我可能还需要一些蔬菜水果罐头，以及卫生纸等日用品。瓶装水的话，我反而不担心，第一是太重很难抬回家，第二是我平时都烧水喝，大概是没有这个需求。囤积这些食物，也不怕浪费，反正以后懒得出门的时候就可以直接吃。</p>
+<p>由于时间安排的比较紧，我买完东西就往外走，却发现外面突然下起了倾盆大雨。我来的时候，虽然是阴云密布，但是还没下雨，而且我在Trader Joe里头并没有呆多久。我凑巧又没带伞，于是只能在超市里头等。还好雨下了十分钟左右就开始变小，否则如果一直下雨的话，晚上的课怕是要迟到。</p>
+<p>今天跟君浪简单聊了下美国这边的疫情状况，尤其是纽约曼哈顿出现了一个病例。本来在说疫情的，不知道为啥他就把话题转到了我目标的妹子上。。。说实话，我是觉得目标妹子对我是没什么好感的，君浪也说帮忙容易沦为工具人。不过关于工具人，我倒是有一点看法。因为我本来朋友就不是很多，那通过自己的一些技能，从而能够认识到一些人，拓宽自己的交友面，并不是一个坏主意。君浪还说：“如果她有考虑你就不会在关系还不明朗的情况下暴露自己的缺点”。这句感觉还是有一定道理的，但是交往这种东西，也没有一定的公式可以套，缺点这种东西，也不是非黑即白，具体界定还得看个人。君浪作为过来人，最后指导了三个判断态度的方式，分别是主动发起聊天，聊天打字较多条目分散，线下行为产生微小变化。老实说，其实我三条全被说中，但是我本身还是想拓宽人际关系网的，只不过如果有比较感兴趣的就去追，就算对方对我没兴趣，那至少拓宽人际关系网这个前提条件还是达到了嘛。而且还有一点，我认为很重要，就是选择的双向性，她在选择的时候，我也在做出相应的判断。如果后续接触下来，我感觉不合适，那就直接划归朋友一类，也是挺好的。</p>
+<p>说句题外话，现在趁着还没有女朋友，抓紧给自己充电，学习新的技术和技能，因为有女朋友之后，部分时间可就不属于自己了~</p>
+<p>接下来又跟君浪聊到路由器，他居然以为路由器功能是写死的，并且不知道路由器可以刷系统，让我深感意外。然后我们又说到笔记的电子化（OCR）以及bgm制作。说到那种动次打次的音乐，我确实是一窍不通的，相关软件也不会用。他问我FLstudio会不会用，我居然还以为这是个Adobe旗下的软件，后来才知道是做各种音乐的。我对制作音乐也就停留在古典音乐，会用Sibelius、musescore这种五线谱写歌的软件。感觉以后可以稍微尝试一下创作动次打次类型的音乐，说不定会带来不一样的体验。</p>
+<p>晚上的课发了期中考的卷子，我果然是选择题全对，然后一些需要背诵的知识点因为没有花太多时间准备，所以有几个点漏了。感觉还是有点可惜的，因为那五个点的详细解释在我之前看的Virtualization and the Cloud里头就有，可惜当时比较懒，没有抓紧时间看。如果考前看了，那印象肯定深刻，毕竟一边看一边写知识要点提纲还是很有效果的。跟我同一个组的Jonah也是195，然而他是错了一个选择题。不过，看起来195/200应该是最高分了。</p>
+<p>明天的Strategic Management考试有点慌，感觉要凉。根据上次的经验，我大概能做的就是把教授给的复习ppt过一次，把主要的知识点记一记。希望明天能够考个还凑合的成绩吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200302.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200302.html" class="post-title-link" itemprop="url">20200302 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-02 20:09:35" itemprop="dateCreated datePublished" datetime="2020-03-02T20:09:35-05:00">2020-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>618</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-03-02 星期一</p>
+<p>今天晚上TEBT期中考试感觉有点凉，选择题只拿了23.5/30（=78.3%）。这次考试个人感觉选择题难度挺大，但是居然有人能在选择题拿满分，真的有点怀疑人生了，因为我们小组全部都在80%上下。不过还好Python部分特别简单，三下五除二就写完了，目测15/15（=100%）。所以最后应该在85%左右吧，其实也还凑合。</p>
+<p>晚上下课之后，收到Arch &amp; Platform的TA的邮件，说期中考出分了。我登进去一看，还好没丢人，拿了个195/200（=97.5%）。其实这次题目还是比较简单，我感觉应该有人拿到满分的吧。毕竟我第一个交卷的，因为当时懒得仔细检查了，想着考得差不多其实就行，总成绩93%以上的话这个课就能保4.0GPA。</p>
+<p>不过很明显的是，当时Arch &amp; Platform考完之后，我就感觉没把握拿满分，跟Risk Management考完之后那种胸有成竹的感觉完全不一样。当时Risk Management的阶段考试，我只用了一半时间就写完了，而且当时就感觉满分应该没问题，因为有个附加题可以容错。最后考出来，不出意料，57/56（=101.8%）。</p>
+<p>过两天有个Strategic Management的阶段考，那个才是重头戏。不仅占总成绩的比重极高，而且难度也不低，需要认真备战。</p>
+<p>Another Eden终于把主线打通关了，之后可以腾出更多时间看看那个《现代操作系统》。</p>
+<p>今天实在没啥好写的，就这样吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200301.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200301.html" class="post-title-link" itemprop="url">20200301 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-01 21:24:52" itemprop="dateCreated datePublished" datetime="2020-03-01T21:24:52-05:00">2020-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>810</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-03-01 星期日</p>
+<p>今天终于把笔记写完发出来了，然后发给君浪看，意外发现君浪居然看过这本书。我之前还以为教材只有英文版，没想到这是一本著名教材，被翻译成多国语言，当然也就有中文版，书名叫《现代操作系统》。君浪晒了下他家的书架，发现我们也都看过《鸟哥Linux》这本书。君浪还想我推荐了《深入理解计算机系统》这本书，然而最近要看的书挺多的，就先扔一边好了。接着还跟君浪大概交流了下写日记的相关事项，他的行文风格跟我大相径庭。感觉他那更像每天记录的心情随笔，我这更像是每日总结以及一些想法的记录。他因为在手机上写，所以基本都不是很长。我一般写流水账速度还是挺快，大概十五分钟可以敲八百字吧，因为流水账还是比较简单的，想到哪里写到哪里就行。</p>
+<p>然后今天又跟zhaouv稍微介绍了一下type 1 hypervisor的工作方式，果然看过书就是不一样，现在能对虚拟机的皮毛侃侃而谈。感觉这些东西，可以不深入去学习，但是还是要了解一些，达到intro课程的知识水平。计算机科学可不只是写代码，其它方面我也得尽快补上来。</p>
+<p>今天跟黄河聊了两句跟囤物资有关的内容，她说今天买了一堆。我上星期倒是买了，但是确实没想到现在大城市华人区已经出现抢购大米的风潮。大概看了新闻，发现大家好像都开始囤货了，看来我也必须尽快准备下，光靠冰箱里头那点东西肯定是不够的，还需要准备一些能够长期存放的食品，比如方便面，罐头，面条，大米等等。尤其是美国2月29日在华盛顿州出现了第一例死亡病例，更加需要未雨绸缪，从而有备无患。</p>
+<p>关于技术类博客，我打算一周尽量出一篇文章，内容的话还没有想好，但是应该是之前学习的但是还不熟练的技术，例如R语言。通过写博客来复习和强化学习内容，我觉得效果还可以。如果不写R语言相关的博客，那应该就是跟《现代操作系统》有关系了。这本书我觉得相当不错，打算全部过一遍。</p>
+<p>明天是TEBT考试，感觉大概把平时的Quiz跟笔记看看，问题应该不大。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/tech/virtualization-and-the-cloud.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/tech/virtualization-and-the-cloud.html" class="post-title-link" itemprop="url">Virtualization and the Cloud</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-01 17:09:25" itemprop="dateCreated datePublished" datetime="2020-03-01T17:09:25-05:00">2020-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tech/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>《现代操作系统》第七章自学笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/tech/virtualization-and-the-cloud.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200229.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200229.html" class="post-title-link" itemprop="url">20200229 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-01 13:36:14" itemprop="dateCreated datePublished" datetime="2020-03-01T13:36:14-05:00">2020-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>988</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-02-29 星期六</p>
+<p>因为研究逆向搞得比较晚，因此没写日记直接去睡觉了，所以这篇日记实际上是3月1日写的。</p>
+<p>最近又开始继续玩Another Eden，这个JRPG游戏还是十分不错的，在众多骗氪手游的时代还能做到出淤泥而不染。</p>
+<p>我在十年前玩过时空之轮，当时就觉得这个游戏很不错，可惜以前因为年龄比较小没能通关，再加上当时也不懂得查攻略，有些地方卡住就卡住了。到现在我还印象深刻的是一个叫火龙战车的Boss，当时记得特别难打。还好网络越来越发达，多年后通过看视频的方式把剧情过完了。</p>
+<p>所以当我偶然间得知时空之轮有个精神续作，叫Another Eden的时候，我就马上下载来玩了。实际体验也是没有辜负我的期望，这根本就是一个打着手游旗号的优质单机游戏。比较有意思的是，氪金入口居然不在主界面，而是被藏在菜单里头。然后唯一的一个氪金点，就是抽角色。不过这游戏是没有真五星角色的，不少五星角色都有提供四星版本，可以通过肝材料来升星，也算是十分亲民。更亲民的是，只用送的几个四星主角一样能打通第一部剧情。</p>
+<p>还有一个比较引人注意的点，就是错综复杂的支线任务，例如城镇里接的支线任务，角色专属支线任务，还有隐藏的支线等等。最关键的是，每个支线都是用心制作的。比如公主米悠（Miyu），打完两个角色专属支线之后，还能继续打由六个支线构成的断章任务，感觉单独拿出来都可以做一个独立的故事章节了。</p>
+<p>这个游戏唯一的缺点，就是肝，特别肝。很难想象，我在进行了3000次战斗，走了100000步之后，主力队伍还没升到满级（80级）。鉴于游戏本身是在本地进行的大量运算，而我又实在肝不动了，就打起了逆向修改的注意，从而达成快速练级。然而我把libgame.so拖入IDA看了半天也不知道要改哪儿，搜关键字也搜不到的样子。我去网上找了别人发的修改版，发现就只改了一条指令。指令本身很好懂，可是看了半天也不明白为啥这么改就是对的，特别郁闷。具体汇编由于篇幅原因我就不贴了，就贴改动的那句以及上下文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.text:00DB7F4C                 LDR             R1, [R6]</span><br><span class="line">.text:00DB7F4E                 MOV             R9, R0</span><br><span class="line">.text:00DB7F50                 MOV             R0, SP</span><br><span class="line">.text:00DB7F52                 ADD.W           R5, R4, #8</span><br><span class="line">.text:00DB7F56                 ADDS            R0, #4</span><br><span class="line">.text:00DB7F58                 ADDS            R1, #4</span><br><span class="line">.text:00DB7F5A                 STR             R5, [SP,#0x38+var_38]</span><br><span class="line">.text:00DB7F5C                 BL.W            sub_68DBD8</span><br><span class="line">.text:00DB7F60                 LDR             R0, [R6]</span><br><span class="line">.text:00DB7F62                 ADDS            R0, #0x1C</span><br><span class="line">.text:00DB7F64                 BL.W            sub_68DD7E</span><br><span class="line">.text:00DB7F68                 MOV             R4, R0</span><br><span class="line">.text:00DB7F6A                 ADD.W           R0, R6, #8</span><br><span class="line">.text:00DB7F6E                 BL.W            sub_68DD7E</span><br><span class="line">.text:00DB7F72                 ADDS            R2, R0, R4</span><br><span class="line">(modified:00DB7F72             MOVS            R2, #0x19)</span><br><span class="line">.text:00DB7F74                 MOV             R1, SP</span><br><span class="line">.text:00DB7F76                 MOV             R0, R9</span><br><span class="line">.text:00DB7F78                 MOV             R3, R8</span><br></pre></td></tr></table></figure>
+
+<p>看起来这个R2寄存器就是数量，因为修改后通过立即数0x19(=25)赋值了，但是看了半天也没懂为什么这个就是。。。其实归根到底还是水平太菜，有空还是找本ARM汇编的书翻一翻，大概了解下常见指令。</p>
+<p>反正不管怎样，修改版算是用上了，虽然只能对拾取物品增幅，但是已经可以通过箱子开经验卷轴来快速升级了，而且也不会太过破坏游戏平衡。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200228.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200228.html" class="post-title-link" itemprop="url">20200228 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-28 23:59:21" itemprop="dateCreated datePublished" datetime="2020-02-28T23:59:21-05:00">2020-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>705</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-02-28 星期五</p>
+<p>昨天买了个Coconut Water尝鲜，结果难喝死了，还以为跟椰子汁差不多。哎，我还一次买了两瓶一升装的，反正以后肯定是不买了。</p>
+<p>周末应该要去一趟ALDI买点菜，顺便稍微囤点方便面什么的，反正这些东西可以放很久，稍微买多点也没啥。如果疫情在美国扩散的话，提前囤积口粮旧可以尽量少去人流密集的地方。</p>
+<p>今天跟君浪稍微交流了下，了解到国内疫情已经处于好转状态，看来抗击疫情已经取得了初步的成效。君浪说他估计要四五月才能回去学校，他们小区前段时间是封闭了，不过因为最近没有新增确诊，改成了出入管制，每家一个出入证，每家每天限出入一次。尽管现在还没完全放开，情况已经改善很多。</p>
+<p>然后君浪问了我一个很有意思的问题，就是虚拟机到底能不能用GPU。根据书上所说，可以通过Device pass through来把物理设备直接分配给虚拟机，而且要使用type 1 hypervisor（例如VMware ESXi）。但是我再查了下，如果这么做，不仅其它Guest OS将无法使用GPU，就连Host OS也一样不能用GPU。所以，这个问题的答案，其实最简单的方法，就是装个Windows + Linux双系统。</p>
+<p>虚拟化的书我已经差不多看完了，应该这两天就可以把提纲式笔记发出来。</p>
+<p>哦，顺带提一句，我GitHub所有项目加起来一共收到了30 stars，挺开心的，，同时也有点意外，因为惊讶于这么水的项目还有人star。不过我写的东西既然有人在用，那还是得找时间去填坑。</p>
+<p>其实感觉生活貌似有点索然无味，写个日记也要想一会儿，感觉能写的东西不多，有种每天都千篇一律的感觉。周末还是出去转悠转悠，或者多跟人聊聊天也行，要不然感觉真没东西写。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200227.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200227.html" class="post-title-link" itemprop="url">20200227 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-28 00:16:58" itemprop="dateCreated datePublished" datetime="2020-02-28T00:16:58-05:00">2020-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-02-27 星期四</p>
+<p>今天得知了树莓派降价的消息，有点心动了。我手上这个是树莓派3b+，记得是2018年7月买的。虽然吃灰有一段时间了，但是我也没舍得卖掉，毕竟当时刚买的联想笔记本因为主板质量问题坏掉之后，我用这个树莓派硬撑了一个半月。对，联想的保修部门在我看来就是不行，明明是笔记本自身的质量问题，他们又以过了三十天为理由拒绝换机。拒绝换机也就算了，那就给我赶紧修好呗，毕竟又不是我弄坏的。他们折腾了半天，而且一会儿说有零件一会儿说没零件，反反复复的忽悠我。后来我也是没办法啊，只能每天打电话给联想客服质问此事。反正最后历经四十五天才给我修好寄回来。正是因为这样，树莓派也算是给我立下了汗马功劳，所以在后来吃灰之后我就打算一直留着了。</p>
+<p>那段时间，树莓派是当作主力PC使用的，其实除了速度慢点，以及不能带出去用之外，没感觉有什么特别坑的地方。唯一要吐槽的，估计就是内存有点小，当时记得Chromium浏览器打开三四个标签页就会有点卡，偶尔会直接死机。不过写作业什么的倒是问题不大。</p>
+<p>这次降价的树莓派4，跟上一代产品（树莓派3b+）相比，还是有大幅提升的，下面就简单做一个对比。</p>
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Raspberry Pi 3 B+</th>
+<th>Raspberry Pi 4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>ARM Cortex-A53 1.4GHz</td>
+<td>ARM Cortex-A72 1.5GHz</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>1GB</td>
+<td>2GB</td>
+</tr>
+<tr>
+<td>Ethernet</td>
+<td>300Mbps</td>
+<td>1000Mbps (Gigabit)</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>USB 2.0</td>
+<td>USB 3.0</td>
+</tr>
+<tr>
+<td>HDMI</td>
+<td>1080p</td>
+<td>4k</td>
+</tr>
+</tbody></table>
+<p>我觉得比较重要的几个提升就是提供了大内存版本，千兆以太网络，以及提供了USB3.0接口。而且最主要是，现在2GB版本的树莓派4也卖$35了，感觉用来搭建一个NAS看高清影视还是很舒服的。</p>
+<p>今天基本上一整天都在下雪，虽然挺冷的，不过还是比下雨好多了，于是今天下午就赶紧去了Trader Joe买点速冻。基本上我每次去Trader Joe无外乎都是买煎饺，云吞，炒饭，以及少许速冻的肉类。还有就是基本都会顺便买点三文鱼，因为很难找到更便宜的了。之前看到Whole Foods的三文鱼价格还是太恐怖了，跟Trader Joe一个价钱，但是却只有一半的重量。</p>
+<p>晚上跟zhaouv聊到计算机专业词汇的翻译问题，感觉他的观点挺有意思的。我在读Virtualization and the cloud的时候，感觉有一些专业性比较强的单词找不到中文翻译，我对此就有点困惑。他说：“不能翻译就是用的不够多，用的多啥都能翻译过来，不然咋和参观的领导吹呢”。这个独到的观点确实让我难以反驳，而且还觉得说的挺有道理，毕竟用多了，自然有人进行本地化工作从而让沟通交流更方便嘛。</p>
+<p>最近冠状病毒感觉有点凶猛，尤其是这几天开始在日本，韩国和意大利肆虐。美国这边看上去又开始恐慌性抢购N95口罩了，价格一夜之间又翻了好几倍。我这里用“又”字，是因为之前一月底的时候，N95口罩已经涨过一轮了，记得当时一个3M的N95口罩在eBay上卖$13左右。今天我又去看了下，价格太离谱了，单个口罩居然能卖到$50，不是亲眼看到还真不相信呢。这种投机倒把的行为，我也不知道怎么评价了。按照经济学理论，这其实就是正常的市场经济行为，需求线右移导致价格升高。如果不涨价的话，那就多数会遇到供不应求的情况，少量的货物被大量买家一扫而空。市场经济造成的涨价行为，其实就是在物资紧缺的情况下，价高者得，只不过这次涨价行为感觉确实过份了点。在疫情爆发之前，一个N95口罩大概也就在$2左右，现在直接涨了几十倍，相信也跟不少商家囤积居奇有很大关系吧。</p>
+<p>目前我还是不慌的，但是感觉还是要稍微囤一点物资了，比如速冻食品和可以长期室温存放的罐头等等。就算用不上，以后也可以慢慢消耗，就当是提前消费吧。关于口罩，我觉得还是继续观望好了，现在花$50买一个口罩感觉还是十分不理智的。我也问了国内的朋友，他们说口罩现在也不太容易买，看来到处都是这样呢。</p>
+<p>不管怎样，还是希望疫情可以尽快过去吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200226.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/essay/20200226.html" class="post-title-link" itemprop="url">20200226 杂谈</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-26 22:22:52" itemprop="dateCreated datePublished" datetime="2020-02-26T22:22:52-05:00">2020-02-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>822</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2020-02-26 星期三</p>
+<p>这两天发现一个好用的图床工具，叫PicGo，是个开源软件。配置好之后，就可以直接通过拖拽的方式将图片上传到GitHub指定的仓库，然后还可以直接复制出markdown的图片链接。美中不足的是，每上传一张图片就会commit一次，我还以为能够进行批量上传并且只算一个commit呢。</p>
+<p>今天又阅读了一部分Virtualization and the cloud，感觉这书确实讲得很清晰明了，于是我直接把整本书都找来了，打算之后都看一看，然后顺便写一个系列的笔记。其实写笔记，还是为了以后复习的时候方便的，毕竟从头到尾看一次的话，很多知识点还是容易忘掉，写成提纲式的笔记就可以周期性的快速回看。而且，很多东西，在理解之后用自己的话总结一次，应该也会多少加深印象吧。</p>
+<p>下午出门去上课，结果公交车上貌似有人跟司机起了争执，然后他们僵持了几分钟之后，下一班车来了，司机直接让我们换车。不过还好今天出门比较早，没迟到。</p>
+<p>说到上课，今天确实有点意思。我前几天才在日记里头浅显的分析了一下企业在价值链上的一些战略，其中我举的例子就是Whole Foods。结果今天教授在回顾前面的知识的时候，提到了差异化战略 (Differentiation strategy)，举的例子居然也是Whole Foods。我当时第一反应是，还好我之前的分析没写错。学以致用，我觉得挺好的，课本上的知识死记硬背之后也没用，还是要能够应用到实际生活中去。</p>
+<p>上完课之后，本来想去超市买点速冻的，然而下大雨，只得作罢。明天要是不下雨，应该就可以去一趟了。毕竟冰箱里头啥也没有，整天吃一些垃圾食品还是不好的。速冻其实也好不到哪里去，不过价格就比外面直接吃便宜大概一半吧，而且最主要是能吃到煎饺。</p>
+<p>话说回来，我也好久没去健身了，感觉每天还是要去健身房运动二十分钟左右吧，毕竟整天学校家里两点一线也不是好事。</p>
+<p>还有，这几天不知道为啥，感觉越来越摸鱼了，一转眼就晚上十点了，我好像啥也没做的样子。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oscarcx123"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">oscarcx123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/oscarcx123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;oscarcx123" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oscarcx123</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">162k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:27</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

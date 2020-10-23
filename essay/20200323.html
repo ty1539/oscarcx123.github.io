@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pikachu.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pikachu.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="-QMh-gRPduq5T_vg3_Pwi3kZsNSiyuEpPBaDIXV8J34">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"oscarcx123.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="2020-03-23 星期一 今天是网课第一天，Zoom的总体效果感觉还是不错的，教授在上课的时候也没有卡顿。只不过坐在家里听课，其实还是容易摸鱼的，因为在教室还是需要顾及到同学和教授的。不过在家里上课也是有好处，就是可以一边吃饭一边听课，尤其是晚上六点半到九点的课。 今天又发现Steam有两个限免游戏，搞不懂一向比较吝啬的Steam为啥会接连大放送。之前Epic每周送一两个游戏的时候，Steam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20200323 杂谈">
+<meta property="og:url" content="https://oscarcx123.github.io/essay/20200323.html">
+<meta property="og:site_name" content="Azure">
+<meta property="og:description" content="2020-03-23 星期一 今天是网课第一天，Zoom的总体效果感觉还是不错的，教授在上课的时候也没有卡顿。只不过坐在家里听课，其实还是容易摸鱼的，因为在教室还是需要顾及到同学和教授的。不过在家里上课也是有好处，就是可以一边吃饭一边听课，尤其是晚上六点半到九点的课。 今天又发现Steam有两个限免游戏，搞不懂一向比较吝啬的Steam为啥会接连大放送。之前Epic每周送一两个游戏的时候，Steam">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-24T05:03:27.000Z">
+<meta property="article:modified_time" content="2020-10-23T05:45:14.748Z">
+<meta property="article:author" content="oscarcx123">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://oscarcx123.github.io/essay/20200323.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>20200323 杂谈 | Azure</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <link rel="stylesheet" href="/aplayer/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/aplayer/APlayer.min.js"></script>
+  <script type="text/javascript" src="/aplayer/music.js"></script>
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Azure</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oscarcx123.github.io/essay/20200323.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="oscarcx123">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Azure">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          20200323 杂谈
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-24 01:03:27" itemprop="dateCreated datePublished" datetime="2020-03-24T01:03:27-04:00">2020-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/essay/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2020-03-23 星期一</p>
+<p>今天是网课第一天，Zoom的总体效果感觉还是不错的，教授在上课的时候也没有卡顿。只不过坐在家里听课，其实还是容易摸鱼的，因为在教室还是需要顾及到同学和教授的。不过在家里上课也是有好处，就是可以一边吃饭一边听课，尤其是晚上六点半到九点的课。</p>
+<p>今天又发现Steam有两个限免游戏，搞不懂一向比较吝啬的Steam为啥会接连大放送。之前Epic每周送一两个游戏的时候，Steam可是岿然不动，坚定不移，坚持只打折不白送的路线。</p>
+<p>今天TEBT期中考试出分了，我在3月2日的随笔中预测过考试的第二部分（Python）感觉能拿15/15，果然不出我所料。然后因为这次期中考试教授给了2.5分的curve，因此我最后的分数应该是(23.5 + 15 + 2.5)/45 = 41/45（=91.1%）。然而教授写的成绩只有90%，我感觉就是漏算了0.5分（40.5/45 = 90%），明天给他发个邮件问问去，在分数这种问题上还是要锱铢必较的。</p>
+<p>周四有Risk Management的考试，感觉有点慌，这两天得赶紧刷题，要不然第二次阶段考就容易挂掉。</p>
+<p>之前在3月3日的随笔中讲到君浪师傅的倾囊相授，其实当时听着感觉还是挺有道理，于是我还真试了下，不主动去联系妹子，看看会发生什么。到今天，我觉得这个实验算是可以结束了。结果嘛，当然是啥也没发生，目标妹子并没有主动发起联系。其实这一点都不意外，因为试出来的结果，跟我在当时随笔中记录下来的判断一模一样。妹子每次主动发起联系，大多都是要把我当工具人，所以并不存在什么好感的。要说失落的话，其实倒也没有，因为在上次去她家捣鼓路由器，意外见到她抽烟之后，就已经把她从“潜在女朋友区域”移动到了“普通朋友区域”。这里也没有什么歧视的意味，仅仅是我本人不太喜欢抽烟的妹子而已。她后来还买了电子烟抽，不过这也是后话了，我现在也没有兴趣知道更多关于她的事情。再加上现在改上网课，可以预计以后应该不会再有什么交集。那么，还是继续去尝试交更多的朋友好了。</p>
+<p>话说回来，MS Visio这个软件我原以为相当冷门，没想到君浪居然也在用，不过是用来给论文画一些示意图。我看他的Visio截图中登录了邮箱，还以为他买了正版，结果还是我想多了。他说：“当然是无敌破解版，登陆跟破解有关系么？我所有office都是登陆的，因为onenote登陆了才能同步”。果然是我孤陋寡闻了，我真的以为必须要正版才能登录账号的。君浪还指点说：“除非有一天软件全部在云上，不然本地破解都防不住，软件只要到本地怎么都得乖乖听话”。虽说君浪这说的很直白，不过确实是话糙理不糙。感觉这也是很多软件开始转型SAAS，以及很多游戏开始强制要求联网的原因吧。游戏确实是破解外挂泛滥的重灾区，把部分关键逻辑放到云端运算，对绝大部分操作进行校验，修改本地客户端用处就不是很大了。不过这个度肯定还是要把握好，因为全部放到云端运算也不现实，总有东西要放到本地的，因此外挂跟反外挂的斗争并不会停息。</p>
+<p>最后记录个令人开心的事情，我的项目afk-arena-tools终于突破20个stars啦！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/essay/20200321.html" rel="prev" title="20200321 杂谈">
+      <i class="fa fa-chevron-left"></i> 20200321 杂谈
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/essay/20200322.html" rel="next" title="20200322 杂谈">
+      20200322 杂谈 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="oscarcx123"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">oscarcx123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/oscarcx123" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;oscarcx123" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">oscarcx123</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">162k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:27</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
